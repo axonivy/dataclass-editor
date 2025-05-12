@@ -3,6 +3,7 @@ import {
   arrayMoveMultiple,
   BasicField,
   Button,
+  deepEqual,
   deleteAllSelectedRows,
   Flex,
   indexOf,
@@ -128,7 +129,7 @@ export const DataClassMasterContent = () => {
 
   const updateOrder = (moveId: string, targetId: string) => {
     const selectedRows = table.getSelectedRowModel().flatRows.map(r => r.original.name);
-    const moveIds = selectedRows.length > 1 ? selectedRows : [dataClass.fields[parseInt(moveId)].name];
+    const moveIds = selectedRows.length > 1 ? selectedRows : [dataClass.fields[parseInt(moveId)]?.name ?? ''];
     const newDataClass = structuredClone(dataClass);
     const moveIndexes = moveIds.map(moveId => indexOf(newDataClass.fields, field => field.name === moveId));
     const toIndex = parseInt(targetId);
@@ -142,18 +143,6 @@ export const DataClassMasterContent = () => {
     options: { multiSelect: true, reorder: { updateOrder: updateDataArray, getRowId: row => row.name } }
   });
 
-  const isSameFields = (data: Field[]) => {
-    if (data.length !== dataClass.fields.length) {
-      return false;
-    }
-    for (let i = 0; i < data.length; i++) {
-      if (data[i].type !== dataClass.fields[i].type) {
-        return false;
-      }
-    }
-    return true;
-  };
-
   const combineFields = useFunction(
     'function/combineFields',
     {
@@ -162,7 +151,7 @@ export const DataClassMasterContent = () => {
     },
     {
       onSuccess: data => {
-        if (!isSameFields(data.fields)) {
+        if (!deepEqual(data.fields, dataClass.fields)) {
           toast.info('Fields successfully combined');
           queryClient.invalidateQueries({ queryKey: genQueryKey('data', context) });
         }

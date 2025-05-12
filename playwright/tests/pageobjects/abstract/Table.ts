@@ -24,13 +24,13 @@ export class Table {
   async expectToHaveValues(...values: Array<Array<string>>) {
     await expect(this.rows).toHaveCount(values.length);
     for (let i = 0; i < values.length; i++) {
-      await this.row(i).expectToHaveValues(...values[i]);
+      await this.row(i).expectToHaveValues(...values[i]!);
     }
   }
 
   async expectToBeSelected(...indexes: Array<number>) {
     for (let i = 0; i < indexes.length; i++) {
-      await this.row(indexes[i]).expectToBeSelected();
+      await this.row(indexes[i]!).expectToBeSelected();
     }
   }
 
@@ -93,10 +93,10 @@ export class Row {
       const column = this.column(i);
       switch (await column.locator.evaluate(element => element.firstElementChild?.tagName)) {
         case 'INPUT':
-          await expect(column.locator.locator('input')).toHaveValue(values[i]);
+          await expect(column.locator.locator('input')).toHaveValue(values[i]!);
           break;
         default:
-          await expect(column.text).toHaveText(values[i]);
+          await expect(column.text).toHaveText(values[i]!);
           break;
       }
     }
