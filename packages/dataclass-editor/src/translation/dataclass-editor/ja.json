@@ -1,0 +1,105 @@
+{
+  "browser": {
+    "dataClasses": "",
+    "ivyScriptTypes": "",
+    "ownTypes": "",
+    "searchAllTypes": "",
+    "typeAsList": ""
+  },
+  "cardinality": {
+    "manyToOne": "",
+    "oneToMany": "",
+    "oneToOne": ""
+  },
+  "cascade": {
+    "all": "",
+    "merge": "",
+    "persist": "",
+    "refresh": "",
+    "remove": ""
+  },
+  "common": {
+    "hotkey": {
+      "focusInscription": "",
+      "focusMain": "",
+      "focusToolbar": "",
+      "help": "",
+      "redo": "",
+      "undo": ""
+    },
+    "label": {
+      "apply": "",
+      "browser": "",
+      "cancel": "",
+      "comment": "",
+      "description": "",
+      "details": "",
+      "general": "",
+      "info": "",
+      "length": "",
+      "name": "",
+      "nameDescription": "",
+      "properties": "",
+      "search": "",
+      "settings": "",
+      "theme": ""
+    },
+    "message": {
+      "errorOccured": ""
+    }
+  },
+  "dialog": {
+    "addAttr": {
+      "create": "",
+      "createTooltip": "",
+      "desc": "",
+      "title": ""
+    }
+  },
+  "hotkey": {
+    "addAttribute": "",
+    "combineAttribute": "",
+    "deleteAttribute": "",
+    "openForm": "",
+    "openProcess": ""
+  },
+  "label": {
+    "annotations": "",
+    "association": "",
+    "attributes": "",
+    "businessData": "",
+    "cardinality": "",
+    "cascade": "",
+    "classType": "",
+    "data": "",
+    "dbField": "",
+    "dbTable": "",
+    "deleteAnnotation": "",
+    "entity": "",
+    "entityProperties": "",
+    "mappedBy": "",
+    "nameTypeComment": "",
+    "persistent": "",
+    "removeOrphans": "",
+    "type": ""
+  },
+  "message": {
+    "noDataClass": ""
+  },
+  "modifier": {
+    "generated": "",
+    "iD": "",
+    "notInsertable": "",
+    "notNullable": "",
+    "notUpdateable": "",
+    "persistent": "",
+    "unique": "",
+    "version": ""
+  },
+  "title": {
+    "attribute": "",
+    "businessData": "",
+    "data": "",
+    "entity": ""
+  }
+}
