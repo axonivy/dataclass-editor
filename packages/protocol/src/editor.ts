@@ -68,6 +68,7 @@ export interface DataClassModel {
   fields: Field[];
 }
 export interface EntityClass {
+  generateRepo: boolean;
   tableName: string;
 }
 export interface Field {

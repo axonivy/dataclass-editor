@@ -8,7 +8,7 @@ test.beforeEach(async ({ page }) => {
 });
 
 test('load data', async () => {
-  await editor.detail.dataClass.entity.expectToHaveValues('DBTableName');
+  await editor.detail.dataClass.entity.expectToHaveValues('DBTableName', false);
 
   await editor.table.row(1).locator.click();
   await editor.detail.field.entity.inscriptionTab.toggle();
@@ -43,6 +43,7 @@ test('save data', async ({ page }) => {
   await editor.detail.dataClass.general.classType.fillValues('Entity');
 
   await editor.detail.dataClass.entity.fillValues('NewDatabaseTableName');
+  await editor.detail.dataClass.entity.dataRepository.click();
 
   await editor.addField('entityField0', 'String');
   await editor.detail.field.general.properties.fillValues(true);
@@ -75,7 +76,7 @@ test('save data', async ({ page }) => {
 
   await page.reload();
 
-  await editor.detail.dataClass.entity.expectToHaveValues('NewDatabaseTableName');
+  await editor.detail.dataClass.entity.expectToHaveValues('NewDatabaseTableName', true);
 
   await editor.table.row(1).locator.click();
   await editor.detail.field.entity.inscriptionTab.toggle();

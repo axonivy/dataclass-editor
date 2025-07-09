@@ -30,7 +30,7 @@ export const useClassType = () => {
 };
 
 const changeToEntityClass = (newDataClass: DataClass) => {
-  newDataClass.entity = { tableName: '' };
+  newDataClass.entity = { tableName: '', generateRepo: false };
   newDataClass.fields.forEach(
     field =>
       (field.entity = {

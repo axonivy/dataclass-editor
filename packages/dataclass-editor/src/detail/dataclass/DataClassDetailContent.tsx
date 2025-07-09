@@ -5,6 +5,7 @@ import { AnnotationsTable } from '../AnnotationsTable';
 import { DataClassNameDescription } from './DataClassNameDescription';
 import { DataClassType } from './DataClassType';
 import { EntityClassDatabaseTable } from './entity/EntityClassDatabaseTable';
+import { EntityClassRepository } from './entity/EntityClassRepository';
 import { useDataClassProperty } from './useDataClassProperty';
 import type { EntityDataClass } from '@axonivy/dataclass-editor-protocol';
 import { combineMessagesOfProperties, getTabState } from '../../data/validation-utils';
@@ -43,6 +44,7 @@ export const DataClassDetailContent = () => {
             content: (
               <EntityClassProvider value={{ entityClass: dataClass, setEntityClass: setDataClass as UpdateConsumer<EntityDataClass> }}>
                 <EntityClassDatabaseTable />
+                <EntityClassRepository />
               </EntityClassProvider>
             ),
             icon: IvyIcons.Database,

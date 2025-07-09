@@ -2,7 +2,7 @@ import { expect, type Locator, type Page } from '@playwright/test';
 import { Collapsible } from '../../abstract/Collapsible';
 import { TextArea } from '../../abstract/TextArea';
 
-export class DataClassDatabaseTable {
+export class EntityClassDatabaseTable {
   readonly collapsible: Collapsible;
   readonly name: TextArea;
 
