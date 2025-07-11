@@ -1,9 +1,9 @@
 /* eslint-disable testing-library/no-node-access */
-import { describe, expect } from 'vitest';
 import type { DataclassType, JavaType } from '@axonivy/dataclass-editor-protocol';
 import { IvyIcons } from '@axonivy/ui-icons';
-import { useTypeData } from './type-data';
 import { renderHook } from '@testing-library/react';
+import { describe, expect } from 'vitest';
+import { useTypeData } from './type-data';
 
 const dataClasses: DataclassType[] = [
   { fullQualifiedName: 'com.example.ClassA', name: 'ClassA', packageName: 'com.example', path: '/path/ClassA' },

@@ -14,9 +14,9 @@ import {
 } from '@axonivy/ui-components';
 import { IvyIcons } from '@axonivy/ui-icons';
 import { useState } from 'react';
+import { useTranslation } from 'react-i18next';
 import { Browser } from './browser/Browser';
 import './InputFieldWithTypeBrowser.css';
-import { useTranslation } from 'react-i18next';
 
 export const BROWSER_BTN_ID = 'browser-btn';
 

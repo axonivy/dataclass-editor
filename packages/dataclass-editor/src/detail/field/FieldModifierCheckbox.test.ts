@@ -1,5 +1,5 @@
+import type { EntityClassField, Field, Modifier } from '@axonivy/dataclass-editor-protocol';
 import { customRenderHook } from '../../context/test-utils/test-utils';
-import type { Field, Modifier, EntityClassField } from '@axonivy/dataclass-editor-protocol';
 import { useModifier } from './FieldModifierCheckbox';
 
 describe('useModifier', () => {

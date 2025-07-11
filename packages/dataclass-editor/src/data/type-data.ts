@@ -1,6 +1,6 @@
+import type { DataclassType, JavaType } from '@axonivy/dataclass-editor-protocol';
 import type { BrowserNode } from '@axonivy/ui-components';
 import { IvyIcons } from '@axonivy/ui-icons';
-import type { DataclassType, JavaType } from '@axonivy/dataclass-editor-protocol';
 import { useMemo } from 'react';
 import { useTranslation } from 'react-i18next';
 

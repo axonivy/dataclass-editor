@@ -1,8 +1,8 @@
+import type { DataclassType } from '@axonivy/dataclass-editor-protocol';
+import type { BrowserNode } from '@axonivy/ui-components';
+import { IvyIcons } from '@axonivy/ui-icons';
 import { describe, expect } from 'vitest';
 import { getInitialExpandState, getInitialSelectState, getInitialTypeAsListState, getInitialValue } from './typeBrowserUtils';
-import type { BrowserNode } from '@axonivy/ui-components';
-import type { DataclassType } from '@axonivy/dataclass-editor-protocol';
-import { IvyIcons } from '@axonivy/ui-icons';
 
 const types: Array<BrowserNode<DataclassType>> = [
   {

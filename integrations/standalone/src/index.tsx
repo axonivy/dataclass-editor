@@ -1,11 +1,11 @@
-import { ClientContextProvider, ClientJsonRpc, DataClassEditor, QueryProvider, initQueryClient } from '@axonivy/dataclass-editor';
-import { ReadonlyProvider, ThemeProvider, toast, Toaster, Spinner, Flex, HotkeysProvider } from '@axonivy/ui-components';
+import { ClientContextProvider, ClientJsonRpc, DataClassEditor, initQueryClient, QueryProvider } from '@axonivy/dataclass-editor';
 import { webSocketConnection, type Connection } from '@axonivy/jsonrpc';
+import { Flex, HotkeysProvider, ReadonlyProvider, Spinner, ThemeProvider, toast, Toaster } from '@axonivy/ui-components';
 import * as React from 'react';
 import * as ReactDOM from 'react-dom/client';
+import { initTranslation } from './i18n';
 import './index.css';
 import { appParam, directSaveParam, fileParam, pmvParam, readonlyParam, themeParam, webSocketBaseParam } from './url-helper';
-import { initTranslation } from './i18n';
 
 export async function start(): Promise<void> {
   const server = webSocketBaseParam();

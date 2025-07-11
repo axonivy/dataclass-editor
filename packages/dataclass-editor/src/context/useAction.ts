@@ -1,6 +1,6 @@
-import { useAppContext } from './AppContext';
-import { useClient } from '../protocol/ClientContextProvider';
 import type { DataActionArgs } from '@axonivy/dataclass-editor-protocol';
+import { useClient } from '../protocol/ClientContextProvider';
+import { useAppContext } from './AppContext';
 
 export function useAction(actionId: DataActionArgs['actionId']) {
   const { context } = useAppContext();

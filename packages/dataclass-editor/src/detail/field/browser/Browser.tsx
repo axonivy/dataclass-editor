@@ -1,7 +1,7 @@
 import { BrowsersView, type BrowsersViewProps } from '@axonivy/ui-components';
-import { useTypeBrowser } from './useTypeBrowser';
-import { useTranslation } from 'react-i18next';
 import { useMemo } from 'react';
+import { useTranslation } from 'react-i18next';
+import { useTypeBrowser } from './useTypeBrowser';
 
 type BrowserProps = {
   onChange: (value: string) => void;

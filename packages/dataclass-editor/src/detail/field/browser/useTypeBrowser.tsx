@@ -1,18 +1,18 @@
+import type { DataclassType } from '@axonivy/dataclass-editor-protocol';
 import { BasicCheckbox, useBrowser, type Browser, type BrowserNode } from '@axonivy/ui-components';
 import { IvyIcons } from '@axonivy/ui-icons';
-import type { DataclassType } from '@axonivy/dataclass-editor-protocol';
-import { typeBrowserApply } from './typeBrowserApply';
 import { useEffect, useState } from 'react';
+import { useTranslation } from 'react-i18next';
+import { useAppContext } from '../../../context/AppContext';
 import { useMeta } from '../../../context/useMeta';
 import { useTypeData } from '../../../data/type-data';
-import { useAppContext } from '../../../context/AppContext';
 import {
   getInitialExpandState,
   getInitialSelectState,
   getInitialTypeAsListState,
   getInitialValue
 } from '../../../utils/browser/typeBrowserUtils';
-import { useTranslation } from 'react-i18next';
+import { typeBrowserApply } from './typeBrowserApply';
 
 export const useTypeBrowser = (value: string): Browser => {
   const { context } = useAppContext();

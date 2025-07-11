@@ -1,6 +1,6 @@
 import type { DataClass } from '@axonivy/dataclass-editor-protocol';
-import { useHeaderTitles } from './useHeaderTitles';
 import { customRenderHook } from '../context/test-utils/test-utils';
+import { useHeaderTitles } from './useHeaderTitles';
 
 test('empty', () => {
   const { result } = customRenderHook(() => useHeaderTitles());

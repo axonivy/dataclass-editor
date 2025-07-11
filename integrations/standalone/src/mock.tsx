@@ -2,10 +2,10 @@ import { ClientContextProvider, DataClassEditor, initQueryClient, QueryProvider 
 import { HotkeysProvider, ReadonlyProvider, ThemeProvider } from '@axonivy/ui-components';
 import React from 'react';
 import * as ReactDOM from 'react-dom/client';
+import { initTranslation } from './i18n';
 import './index.css';
 import { DataClassClientMock } from './mock/dataclass-client-mock';
 import { appParam, fileParam, readonlyParam } from './url-helper';
-import { initTranslation } from './i18n';
 
 const rootElement = document.getElementById('root');
 if (!rootElement) {

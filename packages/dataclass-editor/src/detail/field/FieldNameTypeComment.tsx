@@ -9,12 +9,12 @@ import {
   Flex,
   Textarea
 } from '@axonivy/ui-components';
+import { useTranslation } from 'react-i18next';
 import { useField } from '../../context/DetailContext';
 import { isEntityField, updateCardinality, updateModifiers } from '../../data/dataclass-utils';
 import { combineMessagesOfProperties } from '../../data/validation-utils';
 import { InputFieldWithTypeBrowser } from './InputFieldWithTypeBrowser';
 import { useFieldProperty } from './useFieldProperty';
-import { useTranslation } from 'react-i18next';
 
 export const useType = () => {
   const { field, setField } = useField();

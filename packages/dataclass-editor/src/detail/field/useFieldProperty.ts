@@ -1,5 +1,5 @@
-import { useField } from '../../context/DetailContext';
 import type { Field } from '@axonivy/dataclass-editor-protocol';
+import { useField } from '../../context/DetailContext';
 
 export const useFieldProperty = () => {
   const { field, setField } = useField();

@@ -1,8 +1,8 @@
 import type { Locator } from '@playwright/test';
 import { expect } from '@playwright/test';
+import { Badge } from './Badge';
 import { Button } from './Button';
 import { Message } from './Message';
-import { Badge } from './Badge';
 
 export class Table {
   readonly locator: Locator;

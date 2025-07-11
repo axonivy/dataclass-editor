@@ -1,7 +1,7 @@
 import type { Locator, Page } from '@playwright/test';
+import { InscriptionTab } from '../../abstract/InscriptionTab';
 import { FieldAssociation } from './FieldAssociation';
 import { FieldDatabaseField } from './FieldDatabaseField';
-import { InscriptionTab } from '../../abstract/InscriptionTab';
 
 export class FieldEntity {
   readonly inscriptionTab: InscriptionTab;

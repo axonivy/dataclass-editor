@@ -5,13 +5,13 @@ import type {
   DataActionArgs,
   DataClassCombineArgs,
   DataClassData,
+  DataClassEditorFieldContext,
   DataClassSaveDataArgs,
   DataclassType,
+  DataClassTypeSearchRequest,
   EditorFileContent,
   EntityClassFieldAssociation,
-  DataClassEditorFieldContext,
   JavaType,
-  DataClassTypeSearchRequest,
   ValidationResult
 } from './editor';
 

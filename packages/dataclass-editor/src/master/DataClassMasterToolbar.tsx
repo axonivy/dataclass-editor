@@ -26,11 +26,11 @@ import {
 } from '@axonivy/ui-components';
 import { IvyIcons } from '@axonivy/ui-icons';
 import { useRef } from 'react';
+import { useTranslation } from 'react-i18next';
 import { useAppContext } from '../context/AppContext';
 import { useAction } from '../context/useAction';
-import { useKnownHotkeys } from '../utils/useKnownHotkeys';
 import { useHeaderTitles } from '../utils/useHeaderTitles';
-import { useTranslation } from 'react-i18next';
+import { useKnownHotkeys } from '../utils/useKnownHotkeys';
 
 export const DataClassMasterToolbar = () => {
   const { detail, setDetail, isHdData } = useAppContext();

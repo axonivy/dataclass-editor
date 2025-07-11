@@ -1,8 +1,8 @@
 import { BasicField, Collapsible, CollapsibleContent, CollapsibleState, CollapsibleTrigger } from '@axonivy/ui-components';
+import { useTranslation } from 'react-i18next';
 import { useField } from '../../context/DetailContext';
 import { combineMessagesOfProperties } from '../../data/validation-utils';
 import { FieldModifierCheckbox } from './FieldModifierCheckbox';
-import { useTranslation } from 'react-i18next';
 
 export const FieldProperties = () => {
   const { field, messages } = useField();

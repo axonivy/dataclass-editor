@@ -1,7 +1,7 @@
-import { expect } from 'vitest';
+import type { DataclassType, JavaType } from '@axonivy/dataclass-editor-protocol';
 import type { BrowserNode } from '@axonivy/ui-components';
 import { IvyIcons } from '@axonivy/ui-icons';
-import type { DataclassType, JavaType } from '@axonivy/dataclass-editor-protocol';
+import { expect } from 'vitest';
 import { typeBrowserApply } from './typeBrowserApply';
 
 const javaType: JavaType = {

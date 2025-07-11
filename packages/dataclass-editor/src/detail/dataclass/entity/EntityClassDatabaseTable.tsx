@@ -1,7 +1,7 @@
 import { BasicField, BasicInput, Collapsible, CollapsibleContent, CollapsibleTrigger, Flex } from '@axonivy/ui-components';
+import { useTranslation } from 'react-i18next';
 import { useEntityClass } from '../../../context/AppContext';
 import { useEntityProperty } from './useEntityProperty';
-import { useTranslation } from 'react-i18next';
 
 export const EntityClassDatabaseTable = () => {
   const { entityClass } = useEntityClass();

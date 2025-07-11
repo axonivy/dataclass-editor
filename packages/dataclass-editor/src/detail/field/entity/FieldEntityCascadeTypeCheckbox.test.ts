@@ -1,5 +1,5 @@
-import { customRenderHook } from '../../../context/test-utils/test-utils';
 import type { CascadeType, EntityClassField } from '@axonivy/dataclass-editor-protocol';
+import { customRenderHook } from '../../../context/test-utils/test-utils';
 import { useCascadeType } from './FieldEntityCascadeTypeCheckbox';
 
 describe('useCascadeType', () => {

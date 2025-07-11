@@ -8,10 +8,10 @@ import {
   Input,
   Textarea
 } from '@axonivy/ui-components';
+import { useTranslation } from 'react-i18next';
 import { useDetail } from '../../context/DetailContext';
 import { combineMessagesOfProperties } from '../../data/validation-utils';
 import { useDataClassProperty } from './useDataClassProperty';
-import { useTranslation } from 'react-i18next';
 
 export const DataClassNameDescription = () => {
   const { messages } = useDetail();

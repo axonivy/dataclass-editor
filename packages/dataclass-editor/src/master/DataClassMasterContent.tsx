@@ -31,6 +31,7 @@ import { IvyIcons } from '@axonivy/ui-icons';
 import { useQueryClient } from '@tanstack/react-query';
 import { getCoreRowModel, useReactTable, type ColumnDef, type Row } from '@tanstack/react-table';
 import { useRef } from 'react';
+import { useTranslation } from 'react-i18next';
 import { useAppContext } from '../context/AppContext';
 import { useFunction } from '../context/useFunction';
 import { useValidation } from '../context/useValidation';
@@ -41,7 +42,6 @@ import { AddFieldDialog } from './AddFieldDialog';
 import './DataClassMasterContent.css';
 import { FieldBadges } from './table/FieldBadges';
 import { ValidationRow } from './table/ValidationRow';
-import { useTranslation } from 'react-i18next';
 
 const fullQualifiedClassNameRegex = /(?:[\w]+\.)+([\w]+)(?=[<,> ]|$)/g;
 

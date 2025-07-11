@@ -10,12 +10,12 @@ import type {
 import type { MessageData } from '@axonivy/ui-components';
 import type { RenderHookOptions } from '@testing-library/react';
 import { renderHook } from '@testing-library/react';
-import { type ReactNode } from 'react';
-import { AppProvider, EntityClassProvider } from '../AppContext';
-import { DetailContextProvider } from '../DetailContext';
 import i18n from 'i18next';
+import { type ReactNode } from 'react';
 import { initReactI18next } from 'react-i18next';
 import enTrans from '../../translation/dataclass-editor/en.json';
+import { AppProvider, EntityClassProvider } from '../AppContext';
+import { DetailContextProvider } from '../DetailContext';
 
 type ContextHelperProps = {
   appContext?: {

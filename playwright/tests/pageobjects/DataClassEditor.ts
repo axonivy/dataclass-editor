@@ -3,10 +3,10 @@ import { randomUUID } from 'crypto';
 import { AddFieldDialog } from './AddFieldDialog';
 import { Detail } from './Detail';
 import { Settings } from './Settings';
-import { Button } from './abstract/Button';
-import { Table } from './abstract/Table';
 import { Toolbar } from './Toolbar';
+import { Button } from './abstract/Button';
 import { Message } from './abstract/Message';
+import { Table } from './abstract/Table';
 
 export const server = process.env.BASE_URL ?? 'http://localhost:8081';
 export const user = 'Developer';

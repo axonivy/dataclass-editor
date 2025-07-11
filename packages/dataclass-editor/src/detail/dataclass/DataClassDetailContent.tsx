@@ -1,18 +1,18 @@
+import type { EntityDataClass } from '@axonivy/dataclass-editor-protocol';
 import { BasicInscriptionTabs, Flex, type InscriptionTabProps, type UpdateConsumer } from '@axonivy/ui-components';
+import { IvyIcons } from '@axonivy/ui-icons';
+import { useState } from 'react';
+import { useTranslation } from 'react-i18next';
 import { EntityClassProvider, useAppContext } from '../../context/AppContext';
+import { useDetail } from '../../context/DetailContext';
 import { isEntity } from '../../data/dataclass-utils';
+import { combineMessagesOfProperties, getTabState } from '../../data/validation-utils';
 import { AnnotationsTable } from '../AnnotationsTable';
 import { DataClassNameDescription } from './DataClassNameDescription';
 import { DataClassType } from './DataClassType';
 import { EntityClassDatabaseTable } from './entity/EntityClassDatabaseTable';
 import { EntityClassRepository } from './entity/EntityClassRepository';
 import { useDataClassProperty } from './useDataClassProperty';
-import type { EntityDataClass } from '@axonivy/dataclass-editor-protocol';
-import { combineMessagesOfProperties, getTabState } from '../../data/validation-utils';
-import { useDetail } from '../../context/DetailContext';
-import { useTranslation } from 'react-i18next';
-import { useState } from 'react';
-import { IvyIcons } from '@axonivy/ui-icons';
 
 export const DataClassDetailContent = () => {
   const { dataClass, setDataClass, isHdData } = useAppContext();

@@ -1,5 +1,5 @@
-import type { BrowserNode } from '@axonivy/ui-components';
 import type { DataclassType, JavaType } from '@axonivy/dataclass-editor-protocol';
+import type { BrowserNode } from '@axonivy/ui-components';
 
 export const typeBrowserApply = (type: BrowserNode<DataclassType> | undefined, ivyTypes: Array<JavaType>, typeAsList: boolean) => {
   if (type) {
