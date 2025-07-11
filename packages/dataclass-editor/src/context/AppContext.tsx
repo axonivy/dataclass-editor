@@ -1,6 +1,6 @@
-import { createContext, useContext } from 'react';
-import type { DataClass, EntityDataClass, DataClassEditorDataContext, ValidationResult } from '@axonivy/dataclass-editor-protocol';
+import type { DataClass, DataClassEditorDataContext, EntityDataClass, ValidationResult } from '@axonivy/dataclass-editor-protocol';
 import type { UpdateConsumer, useHistoryData } from '@axonivy/ui-components';
+import { createContext, useContext } from 'react';
 
 type AppContext = {
   context: DataClassEditorDataContext;

@@ -1,8 +1,8 @@
 import type {
   DataActionArgs,
   DataClassData,
-  EditorFileContent,
   DataClassEditorFieldContext,
+  EditorFileContent,
   ValidationResult
 } from '@axonivy/dataclass-editor-protocol/src/editor';
 import type {

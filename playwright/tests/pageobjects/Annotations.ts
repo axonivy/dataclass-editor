@@ -1,8 +1,8 @@
 import type { Locator, Page } from '@playwright/test';
 import { Button } from './abstract/Button';
 import { Collapsible } from './abstract/Collapsible';
-import { Table } from './abstract/Table';
 import { Message } from './abstract/Message';
+import { Table } from './abstract/Table';
 
 export class Annotations {
   readonly collapsible: Collapsible;

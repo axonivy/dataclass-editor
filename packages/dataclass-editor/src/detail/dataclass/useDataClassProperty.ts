@@ -1,5 +1,5 @@
-import { useAppContext } from '../../context/AppContext';
 import type { DataClass } from '@axonivy/dataclass-editor-protocol';
+import { useAppContext } from '../../context/AppContext';
 
 export const useDataClassProperty = () => {
   const { dataClass, setDataClass } = useAppContext();

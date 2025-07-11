@@ -1,4 +1,7 @@
 import { BasicInscriptionTabs, Flex, type InscriptionTabProps } from '@axonivy/ui-components';
+import { IvyIcons } from '@axonivy/ui-icons';
+import { useState } from 'react';
+import { useTranslation } from 'react-i18next';
 import { useAppContext } from '../../context/AppContext';
 import { useField } from '../../context/DetailContext';
 import { isEntityField } from '../../data/dataclass-utils';
@@ -9,9 +12,6 @@ import { FieldEntityDatabaseField } from './entity/FieldEntityDatabaseField';
 import { FieldNameTypeComment } from './FieldNameTypeComment';
 import { FieldProperties } from './FieldProperties';
 import { useFieldProperty } from './useFieldProperty';
-import { useTranslation } from 'react-i18next';
-import { useState } from 'react';
-import { IvyIcons } from '@axonivy/ui-icons';
 
 export const FieldDetailContent = () => {
   const { isHdData } = useAppContext();

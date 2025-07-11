@@ -10,17 +10,17 @@ import {
   Flex,
   type MessageData
 } from '@axonivy/ui-components';
+import { useMemo } from 'react';
+import { useTranslation } from 'react-i18next';
 import { useAppContext } from '../../../context/AppContext';
 import { useEntityField } from '../../../context/DetailContext';
 import { useMeta } from '../../../context/useMeta';
 import { updateCardinality } from '../../../data/dataclass-utils';
 import { combineMessagesOfProperties } from '../../../data/validation-utils';
+import { useCardinalities, useCascadeTypes } from '../../../utils/useLabels';
 import './FieldEntityAssociation.css';
 import { FieldEntityCascadeTypeCheckbox } from './FieldEntityCascadeTypeCheckbox';
 import { useFieldEntityProperty } from './useFieldEntityProperty';
-import { useTranslation } from 'react-i18next';
-import { useMemo } from 'react';
-import { useCardinalities, useCascadeTypes } from '../../../utils/useLabels';
 
 export const useMappedByFieldName = () => {
   const { field, setField } = useEntityField();

@@ -1,9 +1,9 @@
 import { type Field } from '@axonivy/dataclass-editor-protocol';
 import { Flex } from '@axonivy/ui-components';
-import { Badge } from './Badge';
-import './FieldBadges.css';
 import { useTranslation } from 'react-i18next';
 import { useCardinalities, useCascadeTypes, useModifiers } from '../../utils/useLabels';
+import { Badge } from './Badge';
+import './FieldBadges.css';
 
 type FieldBadgesProps = {
   field: Field;

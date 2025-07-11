@@ -1,3 +1,16 @@
+import type {
+  Client,
+  DataActionArgs,
+  DataClassData,
+  DataClassEditorDataContext,
+  EditorFileContent,
+  FunctionRequestTypes,
+  MetaRequestTypes,
+  NotificationTypes,
+  OnNotificationTypes,
+  RequestTypes,
+  ValidationResult
+} from '@axonivy/dataclass-editor-protocol';
 import {
   BaseRpcClient,
   Emitter,
@@ -7,19 +20,6 @@ import {
   type Disposable,
   type MessageConnection
 } from '@axonivy/jsonrpc';
-import type {
-  Client,
-  DataClassData,
-  DataActionArgs,
-  DataClassEditorDataContext,
-  FunctionRequestTypes,
-  MetaRequestTypes,
-  NotificationTypes,
-  OnNotificationTypes,
-  RequestTypes,
-  ValidationResult,
-  EditorFileContent
-} from '@axonivy/dataclass-editor-protocol';
 
 export class ClientJsonRpc extends BaseRpcClient implements Client {
   protected onDataChangedEmitter = new Emitter<void>();

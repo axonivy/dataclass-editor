@@ -1,6 +1,6 @@
+import { isIDType, isVersionType, type Modifier } from '@axonivy/dataclass-editor-protocol';
 import { BasicCheckbox } from '@axonivy/ui-components';
 import { useField } from '../../context/DetailContext';
-import { isIDType, isVersionType, type Modifier } from '@axonivy/dataclass-editor-protocol';
 import { updateModifiers } from '../../data/dataclass-utils';
 
 type FieldModifierCheckboxProps = {

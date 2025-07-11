@@ -7,12 +7,12 @@ import {
   CollapsibleTrigger,
   Flex
 } from '@axonivy/ui-components';
+import { useTranslation } from 'react-i18next';
 import { useEntityField } from '../../../context/DetailContext';
 import { combineMessagesOfProperties } from '../../../data/validation-utils';
+import { useModifiers } from '../../../utils/useLabels';
 import { FieldModifierCheckbox } from '../FieldModifierCheckbox';
 import { useFieldEntityProperty } from './useFieldEntityProperty';
-import { useTranslation } from 'react-i18next';
-import { useModifiers } from '../../../utils/useLabels';
 
 const DATABASE_TYPE_LENGTHS = {
   String: '255',

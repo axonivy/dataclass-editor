@@ -6,11 +6,11 @@ import { DetailContextProvider } from '../context/DetailContext';
 import { useAction } from '../context/useAction';
 import { useValidation } from '../context/useValidation';
 import { messagesByProperty } from '../data/validation-utils';
+import { useHeaderTitles } from '../utils/useHeaderTitles';
 import { useKnownHotkeys } from '../utils/useKnownHotkeys';
 import { DataClassDetailContent } from './dataclass/DataClassDetailContent';
 import './Detail.css';
 import { FieldDetailContent } from './field/FieldDetailContent';
-import { useHeaderTitles } from '../utils/useHeaderTitles';
 
 export const Detail = ({ helpUrl }: { helpUrl: string }) => {
   const { selectedField, dataClass, setDataClass } = useAppContext();

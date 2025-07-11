@@ -1,6 +1,6 @@
-import { classTypeOf } from '../data/dataclass-utils';
 import { useTranslation } from 'react-i18next';
 import { useAppContext } from '../context/AppContext';
+import { classTypeOf } from '../data/dataclass-utils';
 
 export const useHeaderTitles = () => {
   const { dataClass, selectedField } = useAppContext();

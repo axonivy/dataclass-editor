@@ -18,6 +18,7 @@ import {
 import { IvyIcons } from '@axonivy/ui-icons';
 import { useMutation, useQuery, useQueryClient } from '@tanstack/react-query';
 import { useEffect, useMemo, useState } from 'react';
+import { useTranslation } from 'react-i18next';
 import { AppProvider } from './context/AppContext';
 import { useAction } from './context/useAction';
 import './DataClassEditor.css';
@@ -26,9 +27,8 @@ import { DataClassMasterContent } from './master/DataClassMasterContent';
 import { DataClassMasterToolbar } from './master/DataClassMasterToolbar';
 import { useClient } from './protocol/ClientContextProvider';
 import { genQueryKey } from './query/query-client';
-import { useKnownHotkeys } from './utils/useKnownHotkeys';
 import type { Unary } from './utils/lambda/lambda';
-import { useTranslation } from 'react-i18next';
+import { useKnownHotkeys } from './utils/useKnownHotkeys';
 
 function DataClassEditor(props: EditorProps) {
   const { t } = useTranslation();
