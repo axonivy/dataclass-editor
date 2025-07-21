@@ -86,6 +86,7 @@
     "type": "Type"
   },
   "message": {
+    "addFirstItem": "Add the first attribute to your Data Class",
     "noDataClass": "Dataclass not found"
   },
   "modifier": {

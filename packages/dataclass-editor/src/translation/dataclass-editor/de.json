@@ -86,6 +86,7 @@
     "type": "Typ"
   },
   "message": {
+    "addFirstItem": "Fügen Sie das erste Attribut zu ihrer Datenklasse hinzu",
     "noDataClass": "Keine Datenklasse gefunden"
   },
   "modifier": {
