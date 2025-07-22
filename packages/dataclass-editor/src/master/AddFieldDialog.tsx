@@ -16,7 +16,6 @@ import {
   useHotkeys,
   type MessageData
 } from '@axonivy/ui-components';
-import { IvyIcons } from '@axonivy/ui-icons';
 import { type Table } from '@tanstack/react-table';
 import { useMemo, useRef, useState } from 'react';
 import { useTranslation } from 'react-i18next';
@@ -46,9 +45,9 @@ const toErrorMessage = (message: string): MessageData => {
   return { message: message, variant: 'error' };
 };
 
-type AddFieldDialogProps = { table: Table<Field> };
+type AddFieldDialogProps = { table: Table<Field>; children: React.ReactNode };
 
-export const AddFieldDialog = ({ table }: AddFieldDialogProps) => {
+export const AddFieldDialog = ({ table, children }: AddFieldDialogProps) => {
   const nameInputRef = useRef<HTMLInputElement>(null);
   const { dataClass, setDataClass, setSelectedField } = useAppContext();
   const { activateLocalScopes, restoreLocalScopes } = useHotkeyLocalScopes(['addFieldDialog']);
@@ -153,9 +152,7 @@ export const AddFieldDialog = ({ table }: AddFieldDialogProps) => {
         <TooltipProvider>
           <Tooltip>
             <TooltipTrigger asChild>
-              <DialogTrigger asChild>
-                <Button icon={IvyIcons.Plus} aria-label={shortcut.label} />
-              </DialogTrigger>
+              <DialogTrigger asChild>{children}</DialogTrigger>
             </TooltipTrigger>
             <TooltipContent>{shortcut.label}</TooltipContent>
           </Tooltip>

@@ -11,7 +11,7 @@ export class AddFieldDialog {
 
   constructor(page: Page) {
     this.locator = page.getByRole('dialog', { name: 'Add Attribute' });
-    this.open = new Button(page.locator('.dataclass-editor-table-field'), { name: 'Add Attribute' });
+    this.open = new Button(page.locator('.dataclass-editor-main-content'), { name: 'Add Attribute' });
     this.name = new TextArea(this.locator, { label: 'Name' });
     this.type = new TextArea(this.locator, { label: 'Type' });
     this.create = new Button(this.locator, { name: 'Create Attribute' });

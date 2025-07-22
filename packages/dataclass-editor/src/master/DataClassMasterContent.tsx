@@ -7,6 +7,7 @@ import {
   Flex,
   indexOf,
   Message,
+  PanelMessage,
   ReorderHandleWrapper,
   resetAndSetRowSelection,
   selectRow,
@@ -182,7 +183,9 @@ export const DataClassMasterContent = () => {
   const isCombineSupported = context.app === 'designer';
   const control = readonly ? null : (
     <Flex gap={2}>
-      <AddFieldDialog table={table} />
+      <AddFieldDialog table={table}>
+        <Button icon={IvyIcons.Plus} aria-label={hotkeys.addAttr.label} />
+      </AddFieldDialog>
       <Separator decorative orientation='vertical' style={{ height: '20px', margin: 0 }} />
       <TooltipProvider>
         <Tooltip>
@@ -244,30 +247,42 @@ export const DataClassMasterContent = () => {
           ))}
         </Flex>
       )}
-      <BasicField
-        tabIndex={-1}
-        ref={firstElement}
-        className='dataclass-editor-table-field'
-        label={t('label.attributes')}
-        control={control}
-        onClick={event => event.stopPropagation()}
-      >
-        <Table onKeyDown={e => handleKeyDown(e, () => setDetail(!detail))} className='dataclass-editor-table'>
-          <TableResizableHeader headerGroups={table.getHeaderGroups()} onClick={() => selectRow(table)} />
-          <TableBody className='dataclass-editor-table-body'>
-            {table.getRowModel().rows.map(row => (
-              <ValidationRow
-                key={row.id}
-                row={row}
-                isReorderable={table.getState().sorting.length === 0 && !readonly}
-                onDrag={() => handleRowDrag(row)}
-                onClick={event => handleMultiSelectOnRow(row, event)}
-                updateOrder={updateOrder}
-              />
-            ))}
-          </TableBody>
-        </Table>
-      </BasicField>
+      {dataClass.fields === undefined || dataClass.fields.length === 0 ? (
+        <Flex direction='column' alignItems='center' justifyContent='center' style={{ height: '100%' }}>
+          <PanelMessage icon={IvyIcons.Database} message={t('message.addFirstItem')} mode='column'>
+            <AddFieldDialog table={table}>
+              <Button size='large' variant='primary' icon={IvyIcons.Plus}>
+                {t('dialog.addAttr.title')}
+              </Button>
+            </AddFieldDialog>
+          </PanelMessage>
+        </Flex>
+      ) : (
+        <BasicField
+          tabIndex={-1}
+          ref={firstElement}
+          className='dataclass-editor-table-field'
+          label={t('label.attributes')}
+          control={control}
+          onClick={event => event.stopPropagation()}
+        >
+          <Table onKeyDown={e => handleKeyDown(e, () => setDetail(!detail))} className='dataclass-editor-table'>
+            <TableResizableHeader headerGroups={table.getHeaderGroups()} onClick={() => selectRow(table)} />
+            <TableBody className='dataclass-editor-table-body'>
+              {table.getRowModel().rows.map(row => (
+                <ValidationRow
+                  key={row.id}
+                  row={row}
+                  isReorderable={table.getState().sorting.length === 0 && !readonly}
+                  onDrag={() => handleRowDrag(row)}
+                  onClick={event => handleMultiSelectOnRow(row, event)}
+                  updateOrder={updateOrder}
+                />
+              ))}
+            </TableBody>
+          </Table>
+        </BasicField>
+      )}
     </Flex>
   );
 };
