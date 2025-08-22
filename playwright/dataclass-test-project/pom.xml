@@ -6,7 +6,7 @@
   <modelVersion>4.0.0</modelVersion>
   <groupId>dataclass.test.project</groupId>
   <artifactId>dataclass-test-project</artifactId>
-  <version>12.0.8-SNAPSHOT</version>
+  <version>12.0.9-SNAPSHOT</version>
   <packaging>iar</packaging>
 
   <properties>
