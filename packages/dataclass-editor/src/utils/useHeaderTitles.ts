@@ -22,7 +22,7 @@ export const useHeaderTitles = () => {
   let detailTitle = masterTitle;
   if (selectedField !== undefined && selectedField < fields.length) {
     const selectedDataClassField = fields[selectedField];
-    detailTitle = t('title.attribute', { name: selectedDataClassField.name });
+    detailTitle = t('title.attribute', { name: selectedDataClassField?.name ?? '' });
   }
   return { masterTitle, detailTitle };
 };

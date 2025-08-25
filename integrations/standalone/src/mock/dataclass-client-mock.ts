@@ -14,6 +14,7 @@ import type {
 } from '@axonivy/dataclass-editor-protocol/src/types';
 import { dataClass, validations } from './data';
 import { cardinalities, mappedByFields } from './meta';
+import { Emitter } from '@axonivy/jsonrpc';
 
 export class DataClassClientMock implements Client {
   private dataClassData: DataClassData = dataClass;
@@ -63,5 +64,5 @@ export class DataClassClientMock implements Client {
     console.log(`Action: ${JSON.stringify(action)}`);
   }
 
-  onDataChanged: Event<void>;
+  onDataChanged: Event<void> = new Emitter<void>().event;
 }
