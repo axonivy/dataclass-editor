@@ -9,7 +9,7 @@ describe('useClassType', () => {
     expect(dataClass.fields.every((field: Field) => !!field.entity === hasEntity)).toBeTruthy();
     expect(dataClass.fields).toHaveLength(modifiers.length);
     for (let i = 0; i < modifiers.length; i++) {
-      expect(dataClass.fields[i].modifiers).toEqual(modifiers[i]);
+      expect(dataClass.fields[i]?.modifiers).toEqual(modifiers[i]);
     }
   };
 
@@ -54,9 +54,9 @@ describe('useClassType', () => {
     view.result.current.setClassType('ENTITY');
     expect(dataClass).toEqual(originalDataClass);
 
-    expect(newDataClass.fields[0].name).toEqual('id');
-    expect(newDataClass.fields[0].type).toEqual('Integer');
-    expect(newDataClass.fields[0].comment).toEqual('Identifier');
+    expect(newDataClass.fields[0]?.name).toEqual('id');
+    expect(newDataClass.fields[0]?.type).toEqual('Integer');
+    expect(newDataClass.fields[0]?.comment).toEqual('Identifier');
     newDataClass.fields.forEach(field => expect(field.entity?.cascadeTypes).toEqual(['PERSIST', 'MERGE']));
     expectClassType(newDataClass, false, true, [['PERSISTENT', 'ID', 'GENERATED'], ['PERSISTENT'], []]);
   });
@@ -102,9 +102,9 @@ describe('useClassType', () => {
     view.result.current.setClassType('ENTITY');
     expect(dataClass).toEqual(originalDataClass);
 
-    expect(newDataClass.fields[0].name).toEqual('id');
-    expect(newDataClass.fields[0].type).toEqual('Integer');
-    expect(newDataClass.fields[0].comment).toEqual('Identifier');
+    expect(newDataClass.fields[0]?.name).toEqual('id');
+    expect(newDataClass.fields[0]?.type).toEqual('Integer');
+    expect(newDataClass.fields[0]?.comment).toEqual('Identifier');
     newDataClass.fields.forEach(field => expect(field.entity?.cascadeTypes).toEqual(['PERSIST', 'MERGE']));
     expectClassType(newDataClass, false, true, [['PERSISTENT', 'ID', 'GENERATED'], ['PERSISTENT'], []]);
   });
@@ -173,9 +173,9 @@ describe('useClassType', () => {
     view.result.current.setClassType('ENTITY');
     expect(dataClass).toEqual(originalDataClass);
 
-    expect(newDataClass.fields[0].name).not.toEqual('id');
-    expect(newDataClass.fields[0].type).not.toEqual('Integer');
-    expect(newDataClass.fields[0].comment).not.toEqual('Identifier');
+    expect(newDataClass.fields[0]?.name).not.toEqual('id');
+    expect(newDataClass.fields[0]?.type).not.toEqual('Integer');
+    expect(newDataClass.fields[0]?.comment).not.toEqual('Identifier');
     newDataClass.fields.forEach(field => expect(field.entity?.cascadeTypes).toEqual(['PERSIST', 'MERGE']));
     expectClassType(newDataClass, false, true, [['PERSISTENT'], [], []]);
   });

@@ -42,7 +42,7 @@ export class Annotations {
     for (let i = 0; i < annotations.length; i++) {
       const input = this.table.row(i).locator.locator('input');
       await input.click();
-      await input.fill(annotations[i]);
+      await input.fill(annotations[i]!);
       await input.blur();
     }
   }
