@@ -1,0 +1,23 @@
+{
+  "browser": {},
+  "cardinality": {},
+  "cascade": {},
+  "common": {
+    "hotkey": {
+      "help": "オープンヘルプ({{hotkey}})"
+    },
+    "label": {
+      "cancel": "キャンセル",
+      "details": "インフォメーション"
+    },
+    "message": {}
+  },
+  "dialog": {
+    "addAttr": {}
+  },
+  "hotkey": {},
+  "label": {},
+  "message": {},
+  "modifier": {},
+  "title": {}
+}
