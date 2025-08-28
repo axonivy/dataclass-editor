@@ -1,105 +1,23 @@
 {
-  "browser": {
-    "dataClasses": "",
-    "ivyScriptTypes": "",
-    "ownTypes": "",
-    "searchAllTypes": "",
-    "typeAsList": ""
-  },
-  "cardinality": {
-    "manyToOne": "",
-    "oneToMany": "",
-    "oneToOne": ""
-  },
-  "cascade": {
-    "all": "",
-    "merge": "",
-    "persist": "",
-    "refresh": "",
-    "remove": ""
-  },
+  "browser": {},
+  "cardinality": {},
+  "cascade": {},
   "common": {
     "hotkey": {
-      "focusInscription": "",
-      "focusMain": "",
-      "focusToolbar": "",
-      "help": "オープンヘルプ({{hotkey}})",
-      "redo": "",
-      "undo": ""
+      "help": "オープンヘルプ({{hotkey}})"
     },
     "label": {
-      "apply": "",
-      "browser": "",
       "cancel": "キャンセル",
-      "comment": "",
-      "description": "",
-      "details": "インフォメーション",
-      "general": "",
-      "info": "",
-      "length": "",
-      "name": "",
-      "nameDescription": "",
-      "properties": "",
-      "search": "",
-      "settings": "",
-      "theme": ""
+      "details": "インフォメーション"
     },
-    "message": {
-      "errorOccured": ""
-    }
+    "message": {}
   },
   "dialog": {
-    "addAttr": {
-      "create": "",
-      "createTooltip": "",
-      "desc": "",
-      "title": ""
-    }
+    "addAttr": {}
   },
-  "hotkey": {
-    "addAttribute": "",
-    "combineAttribute": "",
-    "deleteAttribute": "",
-    "openForm": "",
-    "openProcess": ""
-  },
-  "label": {
-    "annotations": "",
-    "association": "",
-    "attributes": "",
-    "businessData": "",
-    "cardinality": "",
-    "cascade": "",
-    "classType": "",
-    "data": "",
-    "dbField": "",
-    "dbTable": "",
-    "deleteAnnotation": "",
-    "entity": "",
-    "entityProperties": "",
-    "mappedBy": "",
-    "nameTypeComment": "",
-    "persistent": "",
-    "removeOrphans": "",
-    "type": ""
-  },
-  "message": {
-    "noDataClass": ""
-  },
-  "modifier": {
-    "generated": "",
-    "iD": "",
-    "notInsertable": "",
-    "notNullable": "",
-    "notUpdateable": "",
-    "persistent": "",
-    "unique": "",
-    "version": ""
-  },
-  "title": {
-    "attribute": "",
-    "businessData": "",
-    "data": "",
-    "entity": ""
-  }
+  "hotkey": {},
+  "label": {},
+  "message": {},
+  "modifier": {},
+  "title": {}
 }
