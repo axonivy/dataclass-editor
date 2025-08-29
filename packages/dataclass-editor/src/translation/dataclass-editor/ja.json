@@ -1,6 +1,6 @@
 {
   "browser": {
-    "dataClasses": "",
+    "dataClasses": "データクラス",
     "ivyScriptTypes": "",
     "ownTypes": "",
     "searchAllTypes": "",
@@ -20,7 +20,7 @@
   },
   "common": {
     "hotkey": {
-      "focusInscription": "",
+      "focusInscription": "焦点の徴候({{hotkey}})",
       "focusMain": "",
       "focusToolbar": "",
       "help": "オープンヘルプ({{hotkey}})",
