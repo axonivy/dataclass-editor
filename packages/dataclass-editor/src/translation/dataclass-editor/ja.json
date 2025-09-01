@@ -1,7 +1,10 @@
 {
-  "browser": {},
-  "cardinality": {},
-  "cascade": {},
+  "browser": {
+  },
+  "cardinality": {
+  },
+  "cascade": {
+  },
   "common": {
     "hotkey": {
       "help": "オープンヘルプ({{hotkey}})"
