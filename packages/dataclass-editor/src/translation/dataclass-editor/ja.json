@@ -13,14 +13,21 @@
       "cancel": "キャンセル",
       "details": "インフォメーション"
     },
-    "message": {}
+    "message": {
+    }
   },
   "dialog": {
-    "addAttr": {}
+    "addAttr": {
+    }
   },
-  "hotkey": {},
-  "label": {},
-  "message": {},
-  "modifier": {},
-  "title": {}
+  "hotkey": {
+  },
+  "label": {
+  },
+  "message": {
+  },
+  "modifier": {
+  },
+  "title": {
+  }
 }
