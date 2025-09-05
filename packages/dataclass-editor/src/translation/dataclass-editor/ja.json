@@ -1,26 +1,108 @@
 {
-  "browser": {
-  },
-  "cardinality": {
-  },
-  "cascade": {
-  },
   "common": {
     "hotkey": {
-      "help": "オープンヘルプ({{hotkey}})"
+      "help": "ヘルプを開く ({{hotkey}})",
+      "focusMain": "メインをフォーカス ({{hotkey}})",
+      "focusToolbar": "ツールバーをフォーカス ({{hotkey}})",
+      "redo": "やり直す ({{hotkey}})",
+      "undo": "元に戻す ({{hotkey}})",
+      "focusInscription": "インスクリプションをフォーカス ({{hotkey}})"
     },
     "label": {
       "cancel": "キャンセル",
-      "details": "インフォメーション"
+      "details": "詳細",
+      "name": "名前",
+      "search": "検索",
+      "settings": "設定",
+      "description": "説明",
+      "info": "情報",
+      "theme": "テーマ",
+      "apply": "適用",
+      "browser": "ブラウザ",
+      "comment": "コメント",
+      "general": "一般",
+      "length": "長さ",
+      "nameDescription": "名前／説明",
+      "properties": "プロパティ"
     },
-    "message": {}
+    "message": {
+      "errorOccured": "エラーが発生しました: {{message}}"
+    }
+  },
+  "label": {
+    "businessData": "ビジネスデータ",
+    "entity": "エンティティ",
+    "data": "データ",
+    "annotations": "アノテーション",
+    "association": "アソシエーション",
+    "attributes": "属性",
+    "cardinality": "基数",
+    "cascade": "カスケード",
+    "classType": "クラスの種類",
+    "dataRepository": "データリポジトリ",
+    "dbField": "データベースフィールド",
+    "dbTable": "データベーステーブル",
+    "deleteAnnotation": "アノテーションを削除",
+    "entityProperties": "エンティティプロパティ",
+    "generateRepository": "生成",
+    "mappedBy": "Mapped by (マッピングしたユーザー)",
+    "nameTypeComment": "名前／タイプ／コメント",
+    "persistent": "永続",
+    "removeOrphans": "Remove orphans (孤立を削除する)",
+    "type": "タイプ"
+  },
+  "browser": {
+    "dataClasses": "データクラス",
+    "ivyScriptTypes": "Ivy Script のデータ型",
+    "ownTypes": "独自のタイプ",
+    "searchAllTypes": "全種類を検索する",
+    "typeAsList": "リストとしてのタイプ"
+  },
+  "cardinality": {
+    "manyToOne": "Many-to-One (多対 1)",
+    "oneToMany": "One-to-Many (1 対多)",
+    "oneToOne": "One-to-One (1 対 1)"
+  },
+  "cascade": {
+    "all": "すべて",
+    "merge": "マージ",
+    "persist": "永続",
+    "refresh": "更新",
+    "remove": "削除"
   },
   "dialog": {
-    "addAttr": {}
+    "addAttr": {
+      "create": "属性を追加",
+      "createTooltip": "さらに属性を追加するには、{{modifier}} を長押しします。",
+      "desc": "追加する属性の名前と種類を選択してください。",
+      "title": "属性を追加"
+    }
   },
-  "hotkey": {},
-  "label": {},
-  "message": {},
-  "modifier": {},
-  "title": {}
+  "hotkey": {
+    "addAttribute": "属性を追加 ({{hotkey}})",
+    "openProcess": "プロセスを開く({{hotkey}})",
+    "combineAttribute": "属性を結合 ({{hotkey}})",
+    "openForm": "フォームを開く({{hotkey}})",
+    "deleteAttribute": "属性を削除 ({{hotkey}})"
+  },
+  "message": {
+    "addFirstItem": "データクラスに最初の属性を追加する",
+    "noDataClass": "データクラスが見つかりません"
+  },
+  "modifier": {
+    "generated": "生成済み",
+    "iD": "ID",
+    "notInsertable": "挿入不可",
+    "notNullable": "NULL 禁止",
+    "notUpdateable": "更新不可",
+    "persistent": "永続",
+    "unique": "一意",
+    "version": "バージョン"
+  },
+  "title": {
+    "attribute": "属性 - {{name}}",
+    "businessData": "ビジネスデータクラス - {{name}}",
+    "data": "データクラス - {{name}}",
+    "entity": "エンティティクラス - {{name}}"
+  }
 }
