@@ -27,8 +27,8 @@ const messageData = (validations: Array<ValidationResult>): MessageData => {
   return toMessageData(validationOther);
 };
 
-export const toMessageData = (validation: ValidationResult): MessageData => {
-  return { message: validation.message, variant: variant(validation) };
+export const toMessageData = (validation?: ValidationResult): MessageData => {
+  return { message: validation?.message, variant: validation ? variant(validation) : undefined };
 };
 
 export const variant = (validation: ValidationResult): Lowercase<Severity> => {
