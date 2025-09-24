@@ -36,32 +36,32 @@
     "annotations": "アノテーション",
     "association": "アソシエーション",
     "attributes": "属性",
-    "cardinality": "基数",
+    "cardinality": "カーディナリティ",
     "cascade": "カスケード",
-    "classType": "クラスの種類",
+    "classType": "クラスタイプ",
     "dataRepository": "データリポジトリ",
     "dbField": "データベースフィールド",
-    "dbTable": "データベーステーブル",
+    "dbTable": "データベース表",
     "deleteAnnotation": "アノテーションを削除",
     "entityProperties": "エンティティプロパティ",
     "generateRepository": "生成",
-    "mappedBy": "Mapped by (マッピングしたユーザー)",
+    "mappedBy": "マッピングしたユーザー",
     "nameTypeComment": "名前／タイプ／コメント",
     "persistent": "永続",
-    "removeOrphans": "Remove orphans (孤立を削除する)",
+    "removeOrphans": "孤立を削除する",
     "type": "タイプ"
   },
   "browser": {
     "dataClasses": "データクラス",
     "ivyScriptTypes": "Ivy Script のデータ型",
     "ownTypes": "独自のタイプ",
-    "searchAllTypes": "全種類を検索する",
-    "typeAsList": "リストとしてのタイプ"
+    "searchAllTypes": "すべての型を検索",
+    "typeAsList": "リストとしての型"
   },
   "cardinality": {
-    "manyToOne": "Many-to-One (多対 1)",
-    "oneToMany": "One-to-Many (1 対多)",
-    "oneToOne": "One-to-One (1 対 1)"
+    "manyToOne": "多対 1",
+    "oneToMany": "1 対多",
+    "oneToOne": "1 対 1"
   },
   "cascade": {
     "all": "すべて",
@@ -72,9 +72,9 @@
   },
   "dialog": {
     "addAttr": {
-      "create": "属性を追加",
+      "create": "属性を作成",
       "createTooltip": "さらに属性を追加するには、{{modifier}} を長押しします。",
-      "desc": "追加する属性の名前と種類を選択してください。",
+      "desc": "追加する属性の名前と型を選択してください。",
       "title": "属性を追加"
     }
   },
