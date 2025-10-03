@@ -60,7 +60,7 @@ export const useTypeBrowser = (value: string): Browser => {
     name: 'Type',
     icon: IvyIcons.DataClass,
     browser: typesList,
-    header: !context.file.includes('/neo') ? (
+    header: (
       <BasicCheckbox
         label='Search over all types'
         checked={allTypesSearchActive}
@@ -69,7 +69,7 @@ export const useTypeBrowser = (value: string): Browser => {
           setInitialState(false);
         }}
       />
-    ) : undefined,
+    ),
     footer: <BasicCheckbox label='Type as List' checked={typeAsList} onCheckedChange={() => setTypeAsList(!typeAsList)} />,
     infoProvider: row => typeBrowserApply(row?.original as BrowserNode<DataclassType>, ivyTypes, typeAsList),
     applyModifier: row => ({ value: typeBrowserApply(row?.original as BrowserNode<DataclassType>, ivyTypes, typeAsList) })
