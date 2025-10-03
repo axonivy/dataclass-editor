@@ -12,9 +12,9 @@ import type {
   MappedByFieldsContext,
   MetaRequestTypes
 } from '@axonivy/dataclass-editor-protocol/src/types';
+import { Emitter } from '@axonivy/jsonrpc';
 import { dataClass, validations } from './data';
 import { cardinalities, mappedByFields } from './meta';
-import { Emitter } from '@axonivy/jsonrpc';
 
 export class DataClassClientMock implements Client {
   private dataClassData: DataClassData = dataClass;
@@ -51,9 +51,9 @@ export class DataClassClientMock implements Client {
         return Promise.resolve([]);
       case 'meta/scripting/dataClasses':
         return Promise.resolve([]);
-      case 'meta/scripting/cardinalities':
+      case 'meta/entity/cardinalities':
         return Promise.resolve(cardinalities(args as DataClassEditorFieldContext));
-      case 'meta/scripting/mappedByFields':
+      case 'meta/entity/mappedByFields':
         return Promise.resolve(mappedByFields(args as MappedByFieldsContext));
       default:
         throw Error('mock meta path not programmed');

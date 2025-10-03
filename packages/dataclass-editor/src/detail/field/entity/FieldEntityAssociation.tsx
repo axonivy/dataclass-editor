@@ -74,10 +74,10 @@ export const FieldEntityAssociation = () => {
     [cardinalityLabels]
   );
 
-  const possibleCardinalities = useMeta('meta/scripting/cardinalities', fieldContext, []).data;
+  const possibleCardinalities = useMeta('meta/entity/cardinalities', fieldContext, []).data;
   const cardinalities = cardinalityItems.filter(cardinality => possibleCardinalities.includes(cardinality.value));
 
-  const mappedByFields = useMeta('meta/scripting/mappedByFields', { ...fieldContext, cardinality }, []).data.map(mappedByField => ({
+  const mappedByFields = useMeta('meta/entity/mappedByFields', { ...fieldContext, cardinality }, []).data.map(mappedByField => ({
     value: mappedByField,
     label: mappedByField
   }));

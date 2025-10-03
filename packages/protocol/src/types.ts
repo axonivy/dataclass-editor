@@ -68,8 +68,8 @@ export interface MetaRequestTypes {
   'meta/scripting/ivyTypes': [void, Array<JavaType>];
   'meta/scripting/allTypes': [DataClassTypeSearchRequest, Array<JavaType>];
   'meta/scripting/ownTypes': [DataClassTypeSearchRequest, Array<JavaType>];
-  'meta/scripting/cardinalities': [DataClassEditorFieldContext, Array<EntityClassFieldAssociation>];
-  'meta/scripting/mappedByFields': [MappedByFieldsContext, Array<string>];
+  'meta/entity/cardinalities': [DataClassEditorFieldContext, Array<EntityClassFieldAssociation>];
+  'meta/entity/mappedByFields': [MappedByFieldsContext, Array<string>];
 }
 
 export interface FunctionRequestTypes {
