@@ -59,7 +59,7 @@ export const useTypeBrowser = (value: string): Browser => {
     name: t('label.type'),
     icon: IvyIcons.DataClass,
     browser: typesList,
-    header: !context.file.includes('/neo') ? (
+    header: (
       <BasicCheckbox
         label={t('browser.searchAllTypes')}
         checked={allTypesSearchActive}
@@ -68,7 +68,7 @@ export const useTypeBrowser = (value: string): Browser => {
           setInitialState(false);
         }}
       />
-    ) : undefined,
+    ),
     footer: <BasicCheckbox label={t('browser.typeAsList')} checked={typeAsList} onCheckedChange={() => setTypeAsList(!typeAsList)} />,
     infoProvider: row => typeBrowserApply(row?.original as BrowserNode<DataclassType>, ivyTypes, typeAsList),
     applyModifier: row => ({ value: typeBrowserApply(row?.original as BrowserNode<DataclassType>, ivyTypes, typeAsList) })
