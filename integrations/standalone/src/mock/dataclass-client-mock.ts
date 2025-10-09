@@ -14,7 +14,7 @@ import type {
 } from '@axonivy/dataclass-editor-protocol/src/types';
 import { Emitter } from '@axonivy/jsonrpc';
 import { dataClass, validations } from './data';
-import { cardinalities, mappedByFields } from './meta';
+import { cardinalities, DATACLASS, DATATYPE, mappedByFields } from './meta';
 
 export class DataClassClientMock implements Client {
   private dataClassData: DataClassData = dataClass;
@@ -50,7 +50,9 @@ export class DataClassClientMock implements Client {
       case 'meta/scripting/ivyTypes':
         return Promise.resolve([]);
       case 'meta/scripting/dataClasses':
-        return Promise.resolve([]);
+        return Promise.resolve(DATACLASS);
+      case 'meta/scripting/allTypes':
+        return Promise.resolve(DATATYPE);
       case 'meta/entity/cardinalities':
         return Promise.resolve(cardinalities(args as DataClassEditorFieldContext));
       case 'meta/entity/mappedByFields':

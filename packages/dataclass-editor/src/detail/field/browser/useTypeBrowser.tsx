@@ -47,6 +47,7 @@ export const useTypeBrowser = (value: string): Browser => {
   }, [allTypesSearchActive, value, typesList.table, types, initialState]);
 
   useEffect(() => {
+    // eslint-disable-next-line react-hooks/set-state-in-effect
     setMetaFilter(typesList.globalFilter.filter);
     if (typesList.globalFilter.filter.length > 0 && !allTypesSearchActive) {
       typesList.table.setExpanded(true);
