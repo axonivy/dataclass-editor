@@ -54,6 +54,10 @@
       "createTooltip": "Hold {{modifier}} to add an additional Attribute.",
       "desc": "Choose the name and type of the Attribute you want to add.",
       "title": "Add Attribute"
+    },
+    "typeBrowser": {
+      "description": "Select the type of the Attribute",
+      "title": "Type Browser"
     }
   },
   "hotkey": {

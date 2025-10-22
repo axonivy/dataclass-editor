@@ -1,4 +1,5 @@
 import {
+  BasicDialogHeader,
   BasicField,
   BasicInput,
   Button,
@@ -16,7 +17,6 @@ import { IvyIcons } from '@axonivy/ui-icons';
 import { useState } from 'react';
 import { useTranslation } from 'react-i18next';
 import { Browser } from './browser/Browser';
-import './InputFieldWithTypeBrowser.css';
 
 export const BROWSER_BTN_ID = 'browser-btn';
 
@@ -46,7 +46,8 @@ export const InputFieldWithTypeBrowser = ({ value, onChange, message }: InputFie
           </TooltipProvider>
         </InputGroup>
       </BasicField>
-      <DialogContent className='dataclass-editor-type-browser-content'>
+      <DialogContent>
+        <BasicDialogHeader title={t('dialog.typeBrowser.title')} description={t('dialog.typeBrowser.description')} />
         <Browser onChange={onChange} close={() => setOpen(false)} value={value} />
       </DialogContent>
     </Dialog>
