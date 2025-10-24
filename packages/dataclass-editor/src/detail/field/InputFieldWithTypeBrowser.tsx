@@ -46,7 +46,7 @@ export const InputFieldWithTypeBrowser = ({ value, onChange, message }: InputFie
           </TooltipProvider>
         </InputGroup>
       </BasicField>
-      <DialogContent>
+      <DialogContent style={{ height: '80vh', gridTemplateRows: 'auto 1fr' }}>
         <BasicDialogHeader title={t('dialog.typeBrowser.title')} description={t('dialog.typeBrowser.description')} />
         <Browser onChange={onChange} close={() => setOpen(false)} value={value} />
       </DialogContent>
