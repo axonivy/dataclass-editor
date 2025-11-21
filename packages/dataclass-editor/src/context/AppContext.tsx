@@ -4,6 +4,7 @@ import type { UpdateConsumer, useHistoryData } from '@axonivy/ui-components';
 
 type AppContext = {
   context: DataClassEditorDataContext;
+  isPersistable: boolean;
   dataClass: DataClass;
   setDataClass: UpdateConsumer<DataClass>;
   selectedField?: number;
@@ -16,6 +17,7 @@ type AppContext = {
 
 const appContext = createContext<AppContext>({
   context: { app: '', pmv: '', file: '' },
+  isPersistable: true,
   dataClass: {} as DataClass,
   setDataClass: () => {},
   selectedField: undefined,

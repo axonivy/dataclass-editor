@@ -11,7 +11,7 @@ import { FieldProperties } from './FieldProperties';
 import { useFieldProperty } from './useFieldProperty';
 
 export const FieldDetailContent = () => {
-  const { isHdData } = useAppContext();
+  const { isPersistable } = useAppContext();
   const { field, messages } = useField();
   const { setProperty } = useFieldProperty();
 
@@ -26,7 +26,7 @@ export const FieldDetailContent = () => {
         <AccordionContent>
           <Flex direction='column' gap={4}>
             <FieldNameTypeComment />
-            {!isHdData && <FieldProperties />}
+            {isPersistable && <FieldProperties />}
             <AnnotationsTable
               annotations={field.annotations}
               setAnnotations={(annotations: Array<string>) => setProperty('annotations', annotations)}
