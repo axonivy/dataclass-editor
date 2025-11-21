@@ -33,6 +33,12 @@ test.describe('add field', () => {
       });
     });
 
+    test('dialog data class', async ({ page }) => {
+      editor = await DataClassEditor.openMock(page, { file: '/src_hd/Data.d.json' });
+      await editor.addField('newAttribute', 'String');
+      await expect(editor.table.row(6).badge('P').locator).toBeHidden();
+    });
+
     test('keyboard', async () => {
       await editor.page.keyboard.press('a');
       await expect(editor.add.locator).toBeVisible();
