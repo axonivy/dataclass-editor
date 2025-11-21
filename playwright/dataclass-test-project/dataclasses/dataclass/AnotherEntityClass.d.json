@@ -1,35 +1,24 @@
 {
-  "$schema" : "https://json-schema.axonivy.com/data-class/12.0.0/data-class.json",
+  "$schema" : "https://json-schema.axonivy.com/data-class/13.2.0/data-class.json",
   "simpleName" : "AnotherEntityClass",
   "namespace" : "dataclass",
-  "isBusinessCaseData" : false,
-  "entity" : { },
   "fields" : [ {
     "name" : "id",
     "type" : "Integer",
     "comment" : "Identifier",
-    "modifiers" : [ "PERSISTENT", "ID", "GENERATED" ],
-    "entity" : {
-      "cascadeTypes" : [ "PERSIST", "MERGE" ],
-      "orphanRemoval" : false
-    }
+    "modifiers" : [ "PERSISTENT", "ID", "GENERATED" ]
   }, {
     "name" : "inverse",
     "type" : "dataclass.EntityClass",
-    "modifiers" : [ "PERSISTENT" ],
     "entity" : {
-      "association" : "ONE_TO_ONE",
-      "cascadeTypes" : [ "PERSIST", "MERGE" ],
-      "orphanRemoval" : false
+      "association" : "ONE_TO_ONE"
     }
   }, {
     "name" : "anotherInverse",
     "type" : "dataclass.EntityClass",
-    "modifiers" : [ "PERSISTENT" ],
     "entity" : {
-      "association" : "ONE_TO_ONE",
-      "cascadeTypes" : [ "PERSIST", "MERGE" ],
-      "orphanRemoval" : false
+      "association" : "ONE_TO_ONE"
     }
-  } ]
+  } ],
+  "entity" : { }
 }

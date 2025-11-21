@@ -1,23 +1,20 @@
 {
-  "$schema" : "https://json-schema.axonivy.com/data-class/12.0.0/data-class.json",
+  "$schema" : "https://json-schema.axonivy.com/data-class/13.2.0/data-class.json",
   "simpleName" : "DataClass",
   "namespace" : "dataclass",
   "comment" : "DataClass comment",
   "annotations" : [ "@jakarta.persistence.Table(name=\"tableName\")" ],
-  "isBusinessCaseData" : false,
   "fields" : [ {
     "name" : "dataClassField0",
-    "type" : "String",
-    "comment" : "DataClassField0 comment",
-    "modifiers" : [ "PERSISTENT" ]
+    "comment" : "DataClassField0 comment"
   }, {
     "name" : "dataClassField1",
     "type" : "Integer",
-    "modifiers" : [ "PERSISTENT" ],
     "annotations" : [ "@jakarta.persistence.ManyToMany", "@jakarta.persistence.JoinTable(name = \"tableName\", joinColumns = { @jakarta.persistence.JoinColumn(name = \"name1Id\", referencedColumnName = \"id\") }, inverseJoinColumns = { @jakarta.persistence.JoinColumn(name = \"tableNameId\", referencedColumnName = \"id\") })" ]
   }, {
     "name" : "dataClassField2",
     "type" : "Date",
-    "comment" : "DataClassField2 comment"
+    "comment" : "DataClassField2 comment",
+    "modifiers" : [ ]
   } ]
 }
