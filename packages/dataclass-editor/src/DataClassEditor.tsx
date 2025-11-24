@@ -116,6 +116,7 @@ function DataClassEditor(props: EditorProps) {
     <AppProvider
       value={{
         context,
+        isPersistable: data.isPersistable,
         dataClass,
         setDataClass: mutation.mutate,
         selectedField,

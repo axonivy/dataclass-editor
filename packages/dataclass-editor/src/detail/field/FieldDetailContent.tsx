@@ -14,7 +14,7 @@ import { FieldProperties } from './FieldProperties';
 import { useFieldProperty } from './useFieldProperty';
 
 export const FieldDetailContent = () => {
-  const { isHdData } = useAppContext();
+  const { isPersistable } = useAppContext();
   const { field, messages } = useField();
   const { setProperty } = useFieldProperty();
   const { t } = useTranslation();
@@ -24,7 +24,7 @@ export const FieldDetailContent = () => {
       content: (
         <Flex direction='column' gap={3} className='dataclass-editor-field-detail'>
           <FieldNameTypeComment />
-          {!isHdData && <FieldProperties />}
+          {isPersistable && <FieldProperties />}
           <AnnotationsTable
             annotations={field.annotations}
             setAnnotations={(annotations: Array<string>) => setProperty('annotations', annotations)}

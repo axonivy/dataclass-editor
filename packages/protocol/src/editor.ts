@@ -56,6 +56,7 @@ export interface DataClassData {
   context: DataClassEditorDataContext;
   data: DataClassModel;
   helpUrl: string;
+  isPersistable: boolean;
 }
 export interface DataClassModel {
   $schema: string;

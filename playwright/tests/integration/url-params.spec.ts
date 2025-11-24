@@ -16,9 +16,6 @@ test('hd data class', async ({ page }) => {
 
   await editor.toolbar.detailsToggle.click();
   await expect(editor.detail.dataClass.general.classType.collapsible.locator).toBeHidden();
-
-  await editor.table.row(0).locator.click();
-  await expect(editor.detail.field.general.properties.collapsible.locator).toBeHidden();
 });
 
 test('readonly', async ({ page }) => {

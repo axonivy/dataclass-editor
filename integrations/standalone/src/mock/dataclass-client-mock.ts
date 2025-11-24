@@ -1,6 +1,7 @@
 import type {
   DataActionArgs,
   DataClassData,
+  DataClassEditorDataContext,
   DataClassEditorFieldContext,
   EditorFileContent,
   ValidationResult
@@ -19,8 +20,12 @@ import { cardinalities, DATACLASS, DATATYPE, mappedByFields } from './meta';
 export class DataClassClientMock implements Client {
   private dataClassData: DataClassData = dataClass;
 
-  data(): Promise<DataClassData> {
-    return Promise.resolve(this.dataClassData);
+  data(context: DataClassEditorDataContext): Promise<DataClassData> {
+    let result = this.dataClassData;
+    if (context.file.includes('src_hd')) {
+      result = { ...this.dataClassData, isPersistable: false };
+    }
+    return Promise.resolve(result);
   }
 
   saveData(saveData: DataClassData): Promise<EditorFileContent> {
