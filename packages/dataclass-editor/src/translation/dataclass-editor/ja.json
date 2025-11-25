@@ -76,6 +76,10 @@
       "createTooltip": "さらに属性を追加するには、{{modifier}} を長押しします。",
       "desc": "追加する属性の名前と型を選択してください。",
       "title": "属性を追加"
+    },
+    "typeBrowser": {
+      "description": "属性の種類を選択してください",
+      "title": "タイプブラウザ"
     }
   },
   "hotkey": {
