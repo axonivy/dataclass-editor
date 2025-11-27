@@ -57,7 +57,8 @@ export const dataClass: DataClassData = {
       }
     ]
   },
-  helpUrl: 'https://dev.axonivy.com'
+  helpUrl: 'https://dev.axonivy.com',
+  isPersistable: true
 };
 
 export const validations = (dataClassData: DataClassData): Array<ValidationResult> => {
