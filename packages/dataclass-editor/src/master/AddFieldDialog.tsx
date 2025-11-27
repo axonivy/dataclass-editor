@@ -55,7 +55,7 @@ type AddFieldDialogProps = {
 };
 
 export const AddFieldDialog = ({ table }: AddFieldDialogProps) => {
-  const { dataClass, setDataClass, setSelectedField } = useAppContext();
+  const { isPersistable, dataClass, setDataClass, setSelectedField } = useAppContext();
   const { activateLocalScopes, restoreLocalScopes } = useHotkeyLocalScopes(['addFieldDialog']);
 
   const [name, setName] = useState('');
@@ -74,7 +74,7 @@ export const AddFieldDialog = ({ table }: AddFieldDialogProps) => {
       name: name,
       type: type,
       comment: '',
-      modifiers: ['PERSISTENT'],
+      modifiers: isPersistable ? ['PERSISTENT'] : [],
       annotations: [],
       entity: isEntity(dataClass)
         ? {

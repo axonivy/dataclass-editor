@@ -1,11 +1,8 @@
 {
-  "$schema" : "https://json-schema.axonivy.com/data-class/12.0.0/data-class.json",
+  "$schema" : "https://json-schema.axonivy.com/data-class/13.2.0/data-class.json",
   "simpleName" : "formData",
   "namespace" : "dataclass.form",
-  "isBusinessCaseData" : false,
   "fields" : [ {
-    "name" : "form",
-    "type" : "String",
-    "modifiers" : [ "PERSISTENT" ]
+    "name" : "form"
   } ]
 }

@@ -17,6 +17,7 @@ import { DetailContextProvider } from '../DetailContext';
 type ContextHelperProps = {
   appContext?: {
     context?: DataClassEditorDataContext;
+    isPersistable?: boolean;
     dataClass?: DataClass;
     setDataClass?: (dataclass: DataClass) => void;
     selectedField?: number;
@@ -41,6 +42,7 @@ const ContextHelper = ({ appContext, entityClassContext, detailContext, children
 
   const aContext = {
     context: appContext?.context ?? ({ file: '' } as DataClassEditorDataContext),
+    isPersistable: appContext?.isPersistable !== undefined ? appContext.isPersistable : true,
     dataClass,
     // @ts-ignore
     setDataClass: appContext?.setDataClass ? getData => appContext.setDataClass(getData(dataClass)) : () => {},
