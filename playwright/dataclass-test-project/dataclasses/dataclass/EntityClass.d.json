@@ -1,9 +1,8 @@
 {
-  "$schema" : "https://json-schema.axonivy.com/data-class/12.0.0/data-class.json",
+  "$schema" : "https://json-schema.axonivy.com/data-class/13.2.0/data-class.json",
   "simpleName" : "EntityClass",
   "namespace" : "dataclass",
   "comment" : "EntityClass comment",
-  "isBusinessCaseData" : false,
   "entity" : {
     "tableName" : "DBTableName"
   },
@@ -11,25 +10,17 @@
     "name" : "id",
     "type" : "Integer",
     "comment" : "Identifier",
-    "modifiers" : [ "PERSISTENT", "ID", "GENERATED" ],
-    "entity" : {
-      "cascadeTypes" : [ "PERSIST", "MERGE" ],
-      "orphanRemoval" : false
-    }
+    "modifiers" : [ "PERSISTENT", "ID", "GENERATED" ]
   }, {
     "name" : "entityClassField0",
-    "type" : "String",
     "modifiers" : [ "PERSISTENT", "NOT_NULLABLE", "UNIQUE", "NOT_UPDATEABLE", "NOT_INSERTABLE" ],
     "entity" : {
       "databaseName" : "dbFieldName0",
-      "databaseFieldLength" : "128",
-      "cascadeTypes" : [ "PERSIST", "MERGE" ],
-      "orphanRemoval" : false
+      "databaseFieldLength" : "128"
     }
   }, {
     "name" : "entityClassField1",
     "type" : "dataclass.AnotherEntityClass",
-    "modifiers" : [ "PERSISTENT" ],
     "entity" : {
       "association" : "ONE_TO_ONE",
       "cascadeTypes" : [ "REMOVE", "REFRESH" ],

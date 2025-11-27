@@ -52,6 +52,8 @@ export const AddFieldDialog = ({ table, children }: AddFieldDialogProps) => {
 };
 
 export const AddFieldDialogContent = ({ table, closeDialog }: { table: Table<Field>; closeDialog: () => void }) => {
+  const { isPersistable } = useAppContext();
+
   const nameInputRef = useRef<HTMLInputElement>(null);
   const { dataClass, setDataClass, setSelectedField } = useAppContext();
 
@@ -66,7 +68,7 @@ export const AddFieldDialogContent = ({ table, closeDialog }: { table: Table<Fie
       name: name,
       type: type,
       comment: '',
-      modifiers: ['PERSISTENT'],
+      modifiers: isPersistable ? ['PERSISTENT'] : [],
       annotations: [],
       entity: isEntity(dataClass)
         ? { databaseName: '', databaseFieldLength: '', cascadeTypes: ['PERSIST', 'MERGE'], mappedByFieldName: '', orphanRemoval: false }
