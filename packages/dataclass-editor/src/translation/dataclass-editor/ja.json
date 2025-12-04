@@ -53,7 +53,7 @@
   },
   "browser": {
     "dataClasses": "データクラス",
-    "ivyScriptTypes": "Ivy Script のデータ型",
+    "ivyScriptTypes": "Ivy Scriptのデータ型",
     "ownTypes": "独自のタイプ",
     "searchAllTypes": "すべての型を検索",
     "typeAsList": "リストとしての型"
@@ -79,7 +79,7 @@
     },
     "typeBrowser": {
       "description": "属性の種類を選択してください",
-      "title": "タイプブラウザ"
+      "title": "型ブラウザ"
     }
   },
   "hotkey": {
