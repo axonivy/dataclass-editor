@@ -1,18 +1,9 @@
 import {
   Button,
-  Field,
   Flex,
   hotkeyRedoFix,
   hotkeyUndoFix,
-  IvyIcon,
-  Label,
-  Popover,
-  PopoverArrow,
-  PopoverContent,
-  PopoverTrigger,
-  ReadonlyProvider,
   Separator,
-  Switch,
   Toolbar,
   ToolbarContainer,
   ToolbarTitle,
@@ -21,8 +12,7 @@ import {
   TooltipProvider,
   TooltipTrigger,
   useHotkeys,
-  useReadonly,
-  useTheme
+  useReadonly
 } from '@axonivy/ui-components';
 import { IvyIcons } from '@axonivy/ui-icons';
 import { useRef } from 'react';
@@ -58,7 +48,6 @@ export const DataClassMasterToolbar = () => {
       <Flex gap={1}>
         {!readonly && <EditButtons />}
         {isHdData && <HdNavigation />}
-        <ThemeSwitcher />
         <TooltipProvider>
           <Tooltip>
             <TooltipTrigger asChild>
@@ -136,48 +125,5 @@ const HdNavigation = () => {
         </Tooltip>
       </TooltipProvider>
     </>
-  );
-};
-
-const ThemeSwitcher = () => {
-  const { t } = useTranslation();
-  const { theme, setTheme, disabled } = useTheme();
-  if (disabled) {
-    return null;
-  }
-  return (
-    <Popover>
-      <TooltipProvider>
-        <Tooltip>
-          <TooltipTrigger asChild>
-            <PopoverTrigger asChild>
-              <Button icon={IvyIcons.Settings} size='large' aria-label={t('common.label.settings')} />
-            </PopoverTrigger>
-          </TooltipTrigger>
-          <TooltipContent>{t('common.label.settings')}</TooltipContent>
-        </Tooltip>
-      </TooltipProvider>
-      <PopoverContent sideOffset={12}>
-        <ReadonlyProvider readonly={false}>
-          <Flex direction='column' gap={2}>
-            <Field direction='row' alignItems='center' justifyContent='space-between' gap={4}>
-              <Label>
-                <Flex alignItems='center' gap={1}>
-                  <IvyIcon icon={IvyIcons.DarkMode} />
-                  {t('common.label.theme')}
-                </Flex>
-              </Label>
-              <Switch
-                defaultChecked={theme === 'dark'}
-                onClick={() => setTheme(theme === 'dark' ? 'light' : 'dark')}
-                size='small'
-                aria-label={t('common.label.theme')}
-              />
-            </Field>
-          </Flex>
-          <PopoverArrow />
-        </ReadonlyProvider>
-      </PopoverContent>
-    </Popover>
   );
 };

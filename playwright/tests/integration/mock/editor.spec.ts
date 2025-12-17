@@ -40,16 +40,6 @@ test('detail', async ({ page }) => {
   await editor.detail.expectToBeDataClass(true);
 });
 
-test('theme', async ({ page }) => {
-  const editor = await DataClassEditor.openMock(page);
-  const settings = editor.settings;
-
-  await settings.theme.expectToBeLight();
-  await settings.button.locator.click();
-  await settings.theme.switch.locator.click();
-  await settings.theme.expectToBeDark();
-});
-
 test('toggle detail', async ({ page }) => {
   const editor = await DataClassEditor.openMock(page);
   await expect(editor.detail.locator).toBeVisible();

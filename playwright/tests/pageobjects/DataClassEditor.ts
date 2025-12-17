@@ -2,7 +2,6 @@ import { expect, type Locator, type Page } from '@playwright/test';
 import { randomUUID } from 'crypto';
 import { AddFieldDialog } from './AddFieldDialog';
 import { Detail } from './Detail';
-import { Settings } from './Settings';
 import { Toolbar } from './Toolbar';
 import { Button } from './abstract/Button';
 import { Message } from './abstract/Message';
@@ -19,7 +18,6 @@ export class DataClassEditor {
   readonly title: Locator;
   readonly toolbar: Toolbar;
   readonly detail: Detail;
-  readonly settings: Settings;
   readonly main: Locator;
   readonly table: Table;
   readonly add: AddFieldDialog;
@@ -32,7 +30,6 @@ export class DataClassEditor {
     this.title = this.page.locator('.dataclass-editor-main-toolbar-title');
     this.toolbar = new Toolbar(this.page, page.locator('.dataclass-editor-main-panel'));
     this.detail = new Detail(this.page);
-    this.settings = new Settings(this.page);
     this.main = this.page.locator('.dataclass-editor-table-field');
     this.table = new Table(this.main);
     this.add = new AddFieldDialog(this.page);
