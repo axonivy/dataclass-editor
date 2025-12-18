@@ -40,9 +40,7 @@
       "name": "Name",
       "nameDescription": "Name / Description",
       "properties": "Properties",
-      "search": "Search",
-      "settings": "Settings",
-      "theme": "Theme"
+      "search": "Search"
     },
     "message": {
       "errorOccured": "An error has occurred: {{message}}"
