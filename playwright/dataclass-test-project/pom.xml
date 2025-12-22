@@ -10,7 +10,7 @@
   </parent>
   <groupId>dataclass.test.project</groupId>
   <artifactId>dataclass-test-project</artifactId>
-  <version>13.2.0-SNAPSHOT</version>
+  <version>13.2.1-SNAPSHOT</version>
   <packaging>iar</packaging>
   <properties>
     <engine.test.app>Developer-dataclass-test-project</engine.test.app>
