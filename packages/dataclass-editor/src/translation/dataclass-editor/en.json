@@ -89,6 +89,9 @@
   },
   "message": {
     "addFirstItem": "Add the first attribute to your Data Class",
+    "emptyName": "Name cannot be empty.",
+    "emptyType": "Type cannot be empty.",
+    "nameIsTaken": "Name is already taken.",
     "noDataClass": "Dataclass not found"
   },
   "modifier": {

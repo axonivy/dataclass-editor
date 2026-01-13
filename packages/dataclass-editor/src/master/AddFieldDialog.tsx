@@ -1,4 +1,4 @@
-import type { DataClass, Field } from '@axonivy/dataclass-editor-protocol';
+import type { Field } from '@axonivy/dataclass-editor-protocol';
 import {
   addRow,
   BasicDialogContent,
@@ -60,8 +60,7 @@ export const AddFieldDialogContent = ({ table, closeDialog }: { table: Table<Fie
   const [name, setName] = useState('newAttribute');
   const [type, setType] = useState('String');
 
-  const nameValidationMessage = useMemo(() => validateFieldName(name, dataClass), [name, dataClass]);
-  const typeValidationMessage = useMemo(() => validateFieldType(type), [type]);
+  const { nameMessage, typeMessage } = useValidateField(name, type);
 
   const addField = (e: React.MouseEvent<HTMLButtonElement, MouseEvent> | KeyboardEvent) => {
     const newField: Field = {
@@ -91,7 +90,7 @@ export const AddFieldDialogContent = ({ table, closeDialog }: { table: Table<Fie
     }
   };
 
-  const allInputsValid = () => !nameValidationMessage && !typeValidationMessage;
+  const allInputsValid = () => !nameMessage && !typeMessage;
   const enter = useHotkeys(
     ['Enter', 'mod+Enter'],
     e => {
@@ -135,29 +134,34 @@ export const AddFieldDialogContent = ({ table, closeDialog }: { table: Table<Fie
       ref={enter}
       tabIndex={-1}
     >
-      <BasicField label={t('common.label.name')} message={nameValidationMessage} aria-label={t('common.label.name')}>
+      <BasicField label={t('common.label.name')} message={nameMessage} aria-label={t('common.label.name')}>
         <Input ref={nameInputRef} value={name} onChange={event => setName(event.target.value)} />
       </BasicField>
-      <InputFieldWithTypeBrowser value={type} message={typeValidationMessage} onChange={setType} />
+      <InputFieldWithTypeBrowser value={type} message={typeMessage} onChange={setType} />
     </BasicDialogContent>
   );
 };
 
-export const validateFieldName = (name: string, dataClass: DataClass) => {
-  if (name.trim() === '') {
-    return toErrorMessage('Name cannot be empty.');
-  }
-  if (dataClass.fields.some(field => field.name === name)) {
-    return toErrorMessage('Name is already taken.');
-  }
-  return;
-};
+export const useValidateField = (name: string, type: string) => {
+  const { t } = useTranslation();
+  const { dataClass } = useAppContext();
 
-export const validateFieldType = (type: string) => {
-  if (type.trim() === '') {
-    return toErrorMessage('Type cannot be empty.');
-  }
-  return;
+  const nameMessage = useMemo(() => {
+    if (name.trim() === '') {
+      return toErrorMessage(t('message.emptyName'));
+    }
+    if (dataClass.fields.some(field => field.name === name)) {
+      return toErrorMessage(t('message.nameIsTaken'));
+    }
+  }, [dataClass.fields, name, t]);
+
+  const typeMessage = useMemo(() => {
+    if (type.trim() === '') {
+      return toErrorMessage(t('message.emptyType'));
+    }
+  }, [type, t]);
+
+  return { nameMessage, typeMessage };
 };
 
 const toErrorMessage = (message: string): MessageData => {

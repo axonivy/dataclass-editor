@@ -1,44 +1,32 @@
 import type { DataClass } from '@axonivy/dataclass-editor-protocol';
-import { validateFieldName, validateFieldType } from './AddFieldDialog';
+import { customRenderHook } from '../context/test-utils/test-utils';
+import { useValidateField } from './AddFieldDialog';
 
 const dataClass = {
   fields: [{ name: 'takenName' }]
 } as DataClass;
 
-describe('validateFieldName', () => {
-  test('valid', () => {
-    expect(validateFieldName('Name', dataClass)).toBeUndefined();
-  });
-
-  describe('invalid', () => {
-    describe('blank', () => {
-      test('empty', () => {
-        expect(validateFieldName('', dataClass)).toEqual({ message: 'Name cannot be empty.', variant: 'error' });
-      });
-
-      test('whitespace', () => {
-        expect(validateFieldName('   ', dataClass)).toEqual({ message: 'Name cannot be empty.', variant: 'error' });
-      });
+describe('useValidateField', () => {
+  test('nameMessage', () => {
+    expect(renderValidateFieldHook('valid', 'valid', dataClass).result.current.nameMessage).toBeUndefined();
+    expect(renderValidateFieldHook('   ', 'valid', dataClass).result.current.nameMessage).toEqual({
+      message: 'Name cannot be empty.',
+      variant: 'error'
     });
-
-    test('taken', () => {
-      expect(validateFieldName('takenName', dataClass)).toEqual({ message: 'Name is already taken.', variant: 'error' });
+    expect(renderValidateFieldHook('takenName', 'valid', dataClass).result.current.nameMessage).toEqual({
+      message: 'Name is already taken.',
+      variant: 'error'
     });
   });
-});
 
-describe('validateFieldType', () => {
-  test('valid', () => {
-    expect(validateFieldType('Type')).toBeUndefined();
-  });
-
-  describe('invalid', () => {
-    test('empty', () => {
-      expect(validateFieldType('')).toEqual({ message: 'Type cannot be empty.', variant: 'error' });
-    });
-
-    test('whitespace', () => {
-      expect(validateFieldType('   ')).toEqual({ message: 'Type cannot be empty.', variant: 'error' });
+  test('typeMessage', () => {
+    expect(renderValidateFieldHook('valid', 'valid', dataClass).result.current.typeMessage).toBeUndefined();
+    expect(renderValidateFieldHook('valid', '   ', dataClass).result.current.typeMessage).toEqual({
+      message: 'Type cannot be empty.',
+      variant: 'error'
     });
   });
 });
+
+const renderValidateFieldHook = (name: string, type: string, dataClass: DataClass) =>
+  customRenderHook(() => useValidateField(name, type), { wrapperProps: { appContext: { dataClass } } });

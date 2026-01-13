@@ -89,6 +89,9 @@
   },
   "message": {
     "addFirstItem": "Fügen Sie das erste Attribut zu ihrer Datenklasse hinzu",
+    "emptyName": "Name darf nicht leer sein.",
+    "emptyType": "Typ darf nicht leer sein.",
+    "nameIsTaken": "Name ist bereits vergeben.",
     "noDataClass": "Keine Datenklasse gefunden"
   },
   "modifier": {
