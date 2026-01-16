@@ -210,13 +210,13 @@ export const DataClassMasterContent = () => {
     </Flex>
   );
 
-  const ref = useHotkeys(
+  const ref = useHotkeys<HTMLDivElement>(
     [hotkeys.deleteAttr.hotkey, hotkeys.combineAttr.hotkey],
     (_, { hotkey }) => {
-      if (hotkey === hotkeys.deleteAttr.hotkey) {
+      if (hotkey === hotkeys.deleteAttr.hotkey.toLocaleLowerCase()) {
         deleteField();
       }
-      if (hotkey === hotkeys.combineAttr.hotkey && isCombineSupported) {
+      if (hotkey === hotkeys.combineAttr.hotkey.toLocaleLowerCase() && isCombineSupported) {
         combineFields.mutate();
       }
     },

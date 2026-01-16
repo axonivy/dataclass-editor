@@ -1,8 +1,6 @@
 import {
   Button,
   Flex,
-  hotkeyRedoFix,
-  hotkeyUndoFix,
   Separator,
   Toolbar,
   ToolbarContainer,
@@ -12,7 +10,9 @@ import {
   TooltipProvider,
   TooltipTrigger,
   useHotkeys,
-  useReadonly
+  useReadonly,
+  useRedoHotkey,
+  useUndoHotkey
 } from '@axonivy/ui-components';
 import { IvyIcons } from '@axonivy/ui-icons';
 import { useRef } from 'react';
@@ -71,8 +71,8 @@ const EditButtons = () => {
   const hotkeys = useKnownHotkeys();
   const undo = () => history.undo(setUnhistorisedDataClass);
   const redo = () => history.redo(setUnhistorisedDataClass);
-  useHotkeys(hotkeys.undo.hotkey, e => hotkeyUndoFix(e, undo), { scopes: ['global'] });
-  useHotkeys(hotkeys.redo.hotkey, e => hotkeyRedoFix(e, redo), { scopes: ['global'] });
+  useUndoHotkey(undo, { scopes: ['global'] });
+  useRedoHotkey(redo, { scopes: ['global'] });
   return (
     <ToolbarContainer maxWidth={450}>
       <Flex>

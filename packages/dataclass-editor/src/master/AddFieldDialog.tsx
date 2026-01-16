@@ -91,7 +91,7 @@ export const AddFieldDialogContent = ({ table, closeDialog }: { table: Table<Fie
   };
 
   const allInputsValid = () => !nameMessage && !typeMessage;
-  const enter = useHotkeys(
+  const enter = useHotkeys<HTMLDivElement>(
     ['Enter', 'mod+Enter'],
     e => {
       if (!allInputsValid() || document.activeElement?.id === BROWSER_BTN_ID) {
