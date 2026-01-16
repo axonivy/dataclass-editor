@@ -8,10 +8,11 @@ import type {
 import {
   Flex,
   PanelMessage,
+  ResizableGroup,
   ResizableHandle,
   ResizablePanel,
-  ResizablePanelGroup,
   Spinner,
+  useDefaultLayout,
   useHistoryData,
   useHotkeys
 } from '@axonivy/ui-components';
@@ -33,6 +34,7 @@ import { useKnownHotkeys } from './utils/useKnownHotkeys';
 function DataClassEditor(props: EditorProps) {
   const { t } = useTranslation();
   const [detail, setDetail] = useState(true);
+  const { defaultLayout, onLayoutChanged } = useDefaultLayout({ groupId: 'dataclass-editor-resize', storage: localStorage });
 
   const [context, setContext] = useState(props.context);
   const [directSave, setDirectSave] = useState(props.directSave);
@@ -127,8 +129,8 @@ function DataClassEditor(props: EditorProps) {
         history
       }}
     >
-      <ResizablePanelGroup direction='horizontal'>
-        <ResizablePanel defaultSize={75} minSize={50} className='dataclass-editor-main-panel'>
+      <ResizableGroup orientation='horizontal' defaultLayout={defaultLayout} onLayoutChanged={onLayoutChanged}>
+        <ResizablePanel id='main' defaultSize='75%' minSize='50%' className='dataclass-editor-main-panel'>
           <Flex className='dataclass-editor-panel-content' direction='column'>
             <DataClassMasterToolbar />
             <DataClassMasterContent />
@@ -137,12 +139,12 @@ function DataClassEditor(props: EditorProps) {
         {detail && (
           <>
             <ResizableHandle />
-            <ResizablePanel defaultSize={25} minSize={10}>
+            <ResizablePanel id='sidebar' defaultSize='25%' minSize='20%'>
               <Detail helpUrl={data.helpUrl} />
             </ResizablePanel>
           </>
         )}
-      </ResizablePanelGroup>
+      </ResizableGroup>
     </AppProvider>
   );
 }
