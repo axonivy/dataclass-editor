@@ -1,5 +1,5 @@
 import type { DataClass } from '.';
-import type { DataClassModel, Field } from './editor';
+import type { DataClassEditorDataContext, DataClassModel, Field } from './editor';
 
 export type { DataClassModel as DataClass };
 export type EntityDataClass = Required<DataClass> & { fields: Array<EntityClassField> };
@@ -20,3 +20,9 @@ export const isVersionType = (type: string): type is DataClassFieldVersionType =
 export type DataClassType = 'DATA' | 'BUSINESS_DATA' | 'ENTITY';
 
 export const DATA_CLASS_FIELD_ENTITY_CASCADE_TYPES = ['ALL', 'PERSIST', 'MERGE', 'REMOVE', 'REFRESH'] as const;
+
+export interface DataActionArgs {
+  context: DataClassEditorDataContext;
+  actionId: 'openForm' | 'openProcess' | 'openUrl';
+  payload: string;
+}

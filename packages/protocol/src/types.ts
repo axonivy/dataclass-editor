@@ -1,10 +1,9 @@
 /* eslint-disable @typescript-eslint/no-invalid-void-type */
-import type { DataClassEditorDataContext } from '.';
-import type { DataClass } from './dataclass';
+import type { DataActionArgs, DataClass } from './dataclass';
 import type {
-  DataActionArgs,
   DataClassCombineArgs,
   DataClassData,
+  DataClassEditorDataContext,
   DataClassEditorFieldContext,
   DataClassSaveDataArgs,
   DataclassType,

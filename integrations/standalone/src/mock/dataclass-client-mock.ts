@@ -1,18 +1,16 @@
 import type {
+  Client,
   DataActionArgs,
   DataClassData,
   DataClassEditorDataContext,
   DataClassEditorFieldContext,
   EditorFileContent,
-  ValidationResult
-} from '@axonivy/dataclass-editor-protocol/src/editor';
-import type {
-  Client,
   Event,
   FunctionRequestTypes,
   MappedByFieldsContext,
-  MetaRequestTypes
-} from '@axonivy/dataclass-editor-protocol/src/types';
+  MetaRequestTypes,
+  ValidationResult
+} from '@axonivy/dataclass-editor-protocol';
 import { Emitter } from '@axonivy/jsonrpc';
 import { dataClass, validations } from './data';
 import { cardinalities, DATACLASS, DATATYPE, mappedByFields } from './meta';
