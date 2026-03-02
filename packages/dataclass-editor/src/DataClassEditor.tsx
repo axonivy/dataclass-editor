@@ -22,7 +22,6 @@ import { useEffect, useMemo, useState } from 'react';
 import { useTranslation } from 'react-i18next';
 import { AppProvider } from './context/AppContext';
 import { useAction } from './context/useAction';
-import './DataClassEditor.css';
 import { Detail } from './detail/Detail';
 import { DataClassMasterContent } from './master/DataClassMasterContent';
 import { DataClassMasterToolbar } from './master/DataClassMasterToolbar';
@@ -130,8 +129,8 @@ function DataClassEditor(props: EditorProps) {
       }}
     >
       <ResizableGroup orientation='horizontal' defaultLayout={defaultLayout} onLayoutChanged={onLayoutChanged}>
-        <ResizablePanel id='main' defaultSize='75%' minSize='50%' className='dataclass-editor-main-panel'>
-          <Flex className='dataclass-editor-panel-content' direction='column'>
+        <ResizablePanel id='dataclass-editor-main' defaultSize='75%' minSize='50%' className='bg-n75'>
+          <Flex className='h-full' direction='column'>
             <DataClassMasterToolbar />
             <DataClassMasterContent />
           </Flex>
@@ -139,7 +138,7 @@ function DataClassEditor(props: EditorProps) {
         {detail && (
           <>
             <ResizableHandle />
-            <ResizablePanel id='sidebar' defaultSize='25%' minSize='20%'>
+            <ResizablePanel id='dataclass-editor-detail' defaultSize='25%' minSize='20%'>
               <Detail helpUrl={data.helpUrl} />
             </ResizablePanel>
           </>

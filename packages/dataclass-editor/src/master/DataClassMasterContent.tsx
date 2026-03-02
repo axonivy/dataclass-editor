@@ -41,7 +41,6 @@ import { variant } from '../data/validation-utils';
 import { genQueryKey } from '../query/query-client';
 import { useKnownHotkeys } from '../utils/useKnownHotkeys';
 import { AddFieldDialog } from './AddFieldDialog';
-import './DataClassMasterContent.css';
 import { FieldBadges } from './table/FieldBadges';
 import { ValidationRow } from './table/ValidationRow';
 
@@ -226,9 +225,9 @@ export const DataClassMasterContent = () => {
   useHotkeys(hotkeys.focusMain.hotkey, () => firstElement.current?.focus(), { scopes: ['global'] });
 
   return (
-    <Flex direction='column' ref={ref} gap={4} className='dataclass-editor-main-content' onClick={() => selectRow(table)}>
+    <Flex direction='column' ref={ref} gap={4} className='h-full overflow-auto' onClick={() => selectRow(table)}>
       {validations.length !== 0 && (
-        <Flex direction='column' className='dataclass-editor-main-messages'>
+        <Flex direction='column' className='ui-dataclass-editor-main-messages'>
           {validations.map((val, index) => (
             <Message key={index} variant={variant(val)}>
               {val.message}
@@ -250,14 +249,14 @@ export const DataClassMasterContent = () => {
         <BasicField
           tabIndex={-1}
           ref={firstElement}
-          className='dataclass-editor-table-field'
+          className='m-3 min-h-0'
           label={t('label.attributes')}
           control={control}
           onClick={event => event.stopPropagation()}
         >
-          <Table onKeyDown={e => handleKeyDown(e, () => setDetail(!detail))} className='dataclass-editor-table'>
+          <Table onKeyDown={e => handleKeyDown(e, () => setDetail(!detail))}>
             <TableResizableHeader headerGroups={table.getHeaderGroups()} onClick={() => selectRow(table)} />
-            <TableBody className='dataclass-editor-table-body'>
+            <TableBody className='overflow-x-hidden'>
               {table.getRowModel().rows.map(row => (
                 <ValidationRow
                   key={row.id}

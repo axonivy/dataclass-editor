@@ -1,9 +1,8 @@
 import type { Field, ValidationResult } from '@axonivy/dataclass-editor-protocol';
-import { MessageRow, ReorderRow, SelectRow, TableCell } from '@axonivy/ui-components';
+import { cn, MessageRow, ReorderRow, SelectRow, TableCell } from '@axonivy/ui-components';
 import { flexRender, type Row } from '@tanstack/react-table';
 import { useValidation } from '../../context/useValidation';
 import { toMessageData } from '../../data/validation-utils';
-import './ValidationRow.css';
 
 type ValidationRowProps = {
   row: Row<Field>;
@@ -40,11 +39,15 @@ export const ValidationRow = ({ row, isReorderable, updateOrder, onClick, onDrag
   );
 };
 
-export const rowClass = (messages: Array<ValidationResult>) => {
-  if (messages.some(message => message.severity === 'ERROR')) {
-    return 'dataclass-editor-row-error';
-  } else if (messages.some(message => message.severity === 'WARNING')) {
-    return 'dataclass-editor-row-warning';
+export const rowClass = (validations?: Array<ValidationResult>) => {
+  if (!validations) {
+    return '';
+  }
+  if (validations.find(message => message.severity === 'ERROR')) {
+    return cn('border-b-error!');
+  }
+  if (validations.find(message => message.severity === 'WARNING')) {
+    return cn('border-b-warning!');
   }
   return '';
 };

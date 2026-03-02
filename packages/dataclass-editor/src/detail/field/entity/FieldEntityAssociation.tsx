@@ -18,7 +18,6 @@ import { useMeta } from '../../../context/useMeta';
 import { updateCardinality } from '../../../data/dataclass-utils';
 import { combineMessagesOfProperties } from '../../../data/validation-utils';
 import { useCardinalities, useCascadeTypes } from '../../../utils/useLabels';
-import './FieldEntityAssociation.css';
 import { FieldEntityCascadeTypeCheckbox } from './FieldEntityCascadeTypeCheckbox';
 import { useFieldEntityProperty } from './useFieldEntityProperty';
 
@@ -101,7 +100,7 @@ export const FieldEntityAssociation = () => {
             </BasicField>
             <BasicField label={t('label.cascade')}>
               <FieldEntityCascadeTypeCheckbox label={cascadeTypeLabels.ALL} cascadeType='ALL' />
-              <Flex direction='column' gap={1} className='dataclass-editor-cascade-types'>
+              <Flex direction='column' gap={1} className='ms-4'>
                 <FieldEntityCascadeTypeCheckbox label={cascadeTypeLabels.PERSIST} cascadeType='PERSIST' />
                 <FieldEntityCascadeTypeCheckbox label={cascadeTypeLabels.MERGE} cascadeType='MERGE' />
                 <FieldEntityCascadeTypeCheckbox label={cascadeTypeLabels.REMOVE} cascadeType='REMOVE' />

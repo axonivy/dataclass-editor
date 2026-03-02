@@ -43,8 +43,8 @@ export const DataClassMasterToolbar = () => {
   const { t } = useTranslation();
 
   return (
-    <Toolbar tabIndex={-1} ref={firstElement} className='dataclass-editor-main-toolbar'>
-      <ToolbarTitle className='dataclass-editor-main-toolbar-title'>{title}</ToolbarTitle>
+    <Toolbar tabIndex={-1} ref={firstElement}>
+      <ToolbarTitle>{title}</ToolbarTitle>
       <Flex gap={1}>
         {!readonly && <EditButtons />}
         {isHdData && <HdNavigation />}

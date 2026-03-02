@@ -9,7 +9,7 @@ export class Badge {
     if (options?.text) {
       this.locator = this.parent.getByText(options.text, { exact: true });
     } else {
-      this.locator = this.parent.locator('.dataclass-editor-badge').nth(options?.nth ?? 0);
+      this.locator = this.parent.locator('.ui-badge').nth(options?.nth ?? 0);
     }
   }
 

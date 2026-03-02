@@ -15,10 +15,10 @@ const pmv = 'dataclass-test-project';
 
 export class DataClassEditor {
   readonly page: Page;
+  readonly main: Locator;
   readonly title: Locator;
   readonly toolbar: Toolbar;
   readonly detail: Detail;
-  readonly main: Locator;
   readonly table: Table;
   readonly add: AddFieldDialog;
   readonly delete: Button;
@@ -27,14 +27,14 @@ export class DataClassEditor {
 
   constructor(page: Page) {
     this.page = page;
-    this.title = this.page.locator('.dataclass-editor-main-toolbar-title');
-    this.toolbar = new Toolbar(this.page, page.locator('.dataclass-editor-main-panel'));
+    this.main = this.page.locator('#dataclass-editor-main');
+    this.title = this.main.locator('.ui-toolbar');
+    this.toolbar = new Toolbar(this.page, this.main);
     this.detail = new Detail(this.page);
-    this.main = this.page.locator('.dataclass-editor-table-field');
     this.table = new Table(this.main);
-    this.add = new AddFieldDialog(this.page);
+    this.add = new AddFieldDialog(this.page, this.main);
     this.delete = new Button(this.main, { name: 'Delete Attribute' });
-    this.messagesContainer = this.page.locator('.dataclass-editor-main-messages');
+    this.messagesContainer = this.page.locator('.ui-dataclass-editor-main-messages');
     this.messages = this.messagesContainer.locator('.ui-message');
   }
 

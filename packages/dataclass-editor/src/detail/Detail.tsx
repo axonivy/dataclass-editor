@@ -9,7 +9,6 @@ import { messagesByProperty } from '../data/validation-utils';
 import { useHeaderTitles } from '../utils/useHeaderTitles';
 import { useKnownHotkeys } from '../utils/useKnownHotkeys';
 import { DataClassDetailContent } from './dataclass/DataClassDetailContent';
-import './Detail.css';
 import { FieldDetailContent } from './field/FieldDetailContent';
 
 export const Detail = ({ helpUrl }: { helpUrl: string }) => {
@@ -35,8 +34,8 @@ export const Detail = ({ helpUrl }: { helpUrl: string }) => {
   const { detailTitle: title } = useHeaderTitles();
 
   return (
-    <Flex direction='column' className='dataclass-editor-panel-content dataclass-editor-detail-panel'>
-      <SidebarHeader icon={IvyIcons.PenEdit} title={title} className='dataclass-editor-detail-header'>
+    <Flex direction='column' className='h-full'>
+      <SidebarHeader icon={IvyIcons.PenEdit} title={title}>
         <TooltipProvider>
           <Tooltip>
             <TooltipTrigger asChild>
@@ -46,7 +45,7 @@ export const Detail = ({ helpUrl }: { helpUrl: string }) => {
           </Tooltip>
         </TooltipProvider>
       </SidebarHeader>
-      <Flex direction='column' className='dataclass-editor-detail-content'>
+      <Flex direction='column' className='h-full overflow-auto'>
         <DetailContextProvider value={{ field, setField, messages: messagesByProperty(validations) }}>
           {!field ? <DataClassDetailContent /> : <FieldDetailContent key={selectedField} />}
         </DetailContextProvider>
