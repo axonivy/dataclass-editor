@@ -23,7 +23,7 @@ export const DataClassDetailContent = () => {
   const tabs: InscriptionTabProps[] = [
     {
       content: (
-        <Flex direction='column' gap={3} className='dataclass-editor-dataclass-detail'>
+        <Flex direction='column' gap={3}>
           <DataClassNameDescription />
           <AnnotationsTable
             annotations={dataClass.annotations}

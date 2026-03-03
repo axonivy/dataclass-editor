@@ -9,29 +9,27 @@ export class Detail {
   readonly field: FieldDetail;
 
   constructor(page: Page) {
-    this.locator = page.locator('.dataclass-editor-detail-panel');
-    this.title = this.locator.locator('.dataclass-editor-detail-header');
+    this.locator = page.locator('#dataclass-editor-detail');
+    this.title = this.locator.locator('.ui-sidebar-header');
     this.dataClass = new DataClassDetail(page, this.locator);
     this.field = new FieldDetail(page, this.locator);
   }
 
   async expectToBeDataClass(isEntity = false) {
-    await expect(this.dataClass.locator).toBeVisible();
+    await expect(this.title).toContainText('Class');
     if (isEntity) {
       await expect(this.dataClass.entity.inscriptionTab.trigger).toBeVisible();
     } else {
       await expect(this.dataClass.entity.inscriptionTab.trigger).toBeHidden();
     }
-    await expect(this.field.locator).toBeHidden();
   }
 
   async expectToBeField(isEntity = false) {
-    await expect(this.field.locator).toBeVisible();
+    await expect(this.title).toContainText('Attribute');
     if (isEntity) {
       await expect(this.field.entity.inscriptionTab.trigger).toBeVisible();
     } else {
       await expect(this.field.entity.inscriptionTab.trigger).toBeHidden();
     }
-    await expect(this.dataClass.locator).toBeHidden();
   }
 }

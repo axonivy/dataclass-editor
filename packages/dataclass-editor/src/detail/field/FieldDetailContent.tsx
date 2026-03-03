@@ -22,7 +22,7 @@ export const FieldDetailContent = () => {
   const tabs: InscriptionTabProps[] = [
     {
       content: (
-        <Flex direction='column' gap={3} className='dataclass-editor-field-detail'>
+        <Flex direction='column' gap={3}>
           <FieldNameTypeComment />
           {isPersistable && <FieldProperties />}
           <AnnotationsTable

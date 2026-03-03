@@ -96,7 +96,7 @@ test('focus jumps', async ({ page }) => {
   await page.keyboard.press('1');
   await expect(editor.toolbar.locator).toBeFocused();
   await page.keyboard.press('2');
-  await expect(editor.main).toBeFocused();
+  await expect(editor.main.locator('.ui-fieldset').first()).toBeFocused();
   await page.keyboard.press('3');
   await expect(editor.detail.dataClass.general.inscriptionTab.trigger).toBeFocused();
   await editor.table.row(0).locator.click();

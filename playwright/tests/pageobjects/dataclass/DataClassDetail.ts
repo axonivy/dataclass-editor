@@ -3,13 +3,11 @@ import { DataClassGeneral } from './DataClassGeneral';
 import { DataClassEntity } from './entity/DataClassEntity';
 
 export class DataClassDetail {
-  readonly locator: Locator;
   readonly general: DataClassGeneral;
   readonly entity: DataClassEntity;
 
   constructor(page: Page, parentLocator: Locator) {
-    this.locator = parentLocator.locator('.dataclass-editor-dataclass-detail');
-    this.general = new DataClassGeneral(page, this.locator);
-    this.entity = new DataClassEntity(page, this.locator);
+    this.general = new DataClassGeneral(page, parentLocator);
+    this.entity = new DataClassEntity(page, parentLocator);
   }
 }

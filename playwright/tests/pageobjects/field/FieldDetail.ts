@@ -3,13 +3,11 @@ import { FieldGeneral } from './FieldGeneral';
 import { FieldEntity } from './entity/FieldEntity';
 
 export class FieldDetail {
-  readonly locator: Locator;
   readonly general: FieldGeneral;
   readonly entity: FieldEntity;
 
   constructor(page: Page, parentLocator: Locator) {
-    this.locator = parentLocator.locator('.dataclass-editor-field-detail');
-    this.general = new FieldGeneral(page, this.locator);
-    this.entity = new FieldEntity(page, this.locator);
+    this.general = new FieldGeneral(page, parentLocator);
+    this.entity = new FieldEntity(page, parentLocator);
   }
 }
