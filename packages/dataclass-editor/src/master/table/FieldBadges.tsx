@@ -36,7 +36,7 @@ const FieldBadge = ({ value, variant, tooltip }: FieldBadgeProps) => {
     <TooltipProvider>
       <Tooltip>
         <TooltipTrigger asChild>
-          <Badge size='s' variant={variant}>
+          <Badge size='s' variant={variant} className='size-5'>
             {value}
           </Badge>
         </TooltipTrigger>
