@@ -1,10 +1,4 @@
-import type {
-  DataClass,
-  DataClassData,
-  DataClassEditorDataContext,
-  EditorProps,
-  ValidationResult
-} from '@axonivy/dataclass-editor-protocol';
+import type { DataClass, DataClassData, DataClassEditorDataContext, EditorProps } from '@axonivy/dataclass-editor-protocol';
 import {
   Flex,
   PanelMessage,
@@ -34,7 +28,7 @@ function DataClassEditor(props: EditorProps) {
   const { t } = useTranslation();
   const [detail, setDetail] = useState(true);
   const { defaultLayout, onLayoutChanged } = useDefaultLayout({ groupId: 'dataclass-editor-resize', storage: localStorage });
-
+  const [initialData, setInitalData] = useState<DataClass | undefined>(undefined);
   const [context, setContext] = useState(props.context);
   const [directSave, setDirectSave] = useState(props.directSave);
   useEffect(() => {
@@ -42,7 +36,6 @@ function DataClassEditor(props: EditorProps) {
     setDirectSave(props.directSave);
   }, [props]);
   const [selectedField, setSelectedField] = useState<number>();
-  const [validations, setValidations] = useState<Array<ValidationResult>>([]);
   const history = useHistoryData<DataClass>();
 
   const client = useClient();
@@ -56,24 +49,30 @@ function DataClassEditor(props: EditorProps) {
     };
   }, []);
 
-  const { data, isPending, isError, error } = useQuery({
+  const { data, isPending, isError, isSuccess, error } = useQuery({
     queryKey: queryKeys.data(context),
-    queryFn: async () => {
-      const data = await client.data(context);
-      history.push(data.data);
-      return data;
-    },
+    queryFn: () => client.data(context),
     structuralSharing: false
   });
 
-  useQuery({
+  const { data: validations } = useQuery({
     queryKey: queryKeys.validate(context),
-    queryFn: async () => {
-      const validations = await client.validate(context);
-      setValidations(validations);
-      return validations;
-    }
+    queryFn: () => client.validate(context),
+    initialData: [],
+    enabled: isSuccess
   });
+
+  useEffect(() => {
+    const dataDispose = client.onDataChanged(() => queryClient.invalidateQueries({ queryKey: queryKeys.data(context) }));
+    return () => {
+      dataDispose.dispose();
+    };
+  }, [client, context, queryClient, queryKeys]);
+
+  if (data?.data !== undefined && initialData === undefined) {
+    setInitalData(data.data);
+    history.push(data.data);
+  }
 
   const mutation = useMutation({
     mutationKey: queryKeys.saveData(context),
