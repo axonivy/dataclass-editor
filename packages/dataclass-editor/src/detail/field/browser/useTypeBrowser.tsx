@@ -32,7 +32,7 @@ export const useTypeBrowser = (value: string): Browser => {
 
   const types = useTypeData(dataClasses, ivyTypes, ownTypes, allDatatypes, allTypesSearchActive);
 
-  const [typeAsList, setTypeAsList] = useState<boolean>(getInitialTypeAsListState(types, getInitialValue(value)));
+  const [typeAsList, setTypeAsList] = useState<boolean>(() => getInitialTypeAsListState(types, getInitialValue(value)));
 
   const typesList = useBrowser(types);
 
@@ -47,10 +47,11 @@ export const useTypeBrowser = (value: string): Browser => {
   }, [allTypesSearchActive, value, typesList.table, types, initialState]);
 
   useEffect(() => {
-    // eslint-disable-next-line react-hooks/set-state-in-effect
+    // eslint-disable-next-line @eslint-react/set-state-in-effect
     setMetaFilter(typesList.globalFilter.filter);
     if (typesList.globalFilter.filter.length > 0 && !allTypesSearchActive) {
       typesList.table.setExpanded(true);
+      // eslint-disable-next-line @eslint-react/set-state-in-effect
       setInitialState(false);
     }
   }, [allTypesSearchActive, typesList.globalFilter.filter, typesList.table]);

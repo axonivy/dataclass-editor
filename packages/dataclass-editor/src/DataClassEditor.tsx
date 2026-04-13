@@ -24,17 +24,11 @@ import { genQueryKey } from './query/query-client';
 import type { Unary } from './utils/lambda/lambda';
 import { useKnownHotkeys } from './utils/useKnownHotkeys';
 
-function DataClassEditor(props: EditorProps) {
+function DataClassEditor({ context, directSave }: EditorProps) {
   const { t } = useTranslation();
   const [detail, setDetail] = useState(true);
   const { defaultLayout, onLayoutChanged } = useDefaultLayout({ groupId: 'dataclass-editor-resize', storage: localStorage });
-  const [initialData, setInitalData] = useState<DataClass | undefined>(undefined);
-  const [context, setContext] = useState(props.context);
-  const [directSave, setDirectSave] = useState(props.directSave);
-  useEffect(() => {
-    setContext(props.context);
-    setDirectSave(props.directSave);
-  }, [props]);
+  const [initialData, setInitialData] = useState<DataClass | undefined>(undefined);
   const [selectedField, setSelectedField] = useState<number>();
   const history = useHistoryData<DataClass>();
 
@@ -70,7 +64,7 @@ function DataClassEditor(props: EditorProps) {
   }, [client, context, queryClient, queryKeys]);
 
   if (data?.data !== undefined && initialData === undefined) {
-    setInitalData(data.data);
+    setInitialData(data.data);
     history.push(data.data);
   }
 

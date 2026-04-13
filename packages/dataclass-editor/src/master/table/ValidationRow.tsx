@@ -33,6 +33,7 @@ export const ValidationRow = ({ row, isReorderable, updateOrder, onClick, onDrag
       {validations
         .filter(val => val.severity !== 'INFO')
         .map((val, index) => (
+          // eslint-disable-next-line @eslint-react/no-array-index-key
           <MessageRow key={index} columnCount={3} message={toMessageData(val)} />
         ))}
     </>

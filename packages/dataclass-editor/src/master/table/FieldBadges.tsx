@@ -53,8 +53,8 @@ const AnnotationTooltipContent = ({ annotations }: { annotations: string[] }) =>
       <div>
         <b>{t('label.annotations')}</b>
       </div>
-      {annotations.map((annotation, index) => (
-        <div key={index}>{simpleAnnotationName(annotation)}</div>
+      {annotations.map(annotation => (
+        <div key={annotation}>{simpleAnnotationName(annotation)}</div>
       ))}
     </>
   );

@@ -1,6 +1,6 @@
 import type { DataClass, DataClassEditorDataContext, EntityDataClass, ValidationResult } from '@axonivy/dataclass-editor-protocol';
 import type { UpdateConsumer, useHistoryData } from '@axonivy/ui-components';
-import { createContext, useContext } from 'react';
+import { createContext, use } from 'react';
 
 type AppContext = {
   context: DataClassEditorDataContext;
@@ -15,7 +15,7 @@ type AppContext = {
   history: ReturnType<typeof useHistoryData<DataClass>>;
 };
 
-const appContext = createContext<AppContext>({
+const AppContext = createContext<AppContext>({
   context: { app: '', pmv: '', file: '' },
   isPersistable: true,
   dataClass: {} as DataClass,
@@ -28,10 +28,10 @@ const appContext = createContext<AppContext>({
   history: { push: () => {}, undo: () => {}, redo: () => {}, canUndo: false, canRedo: false }
 });
 
-export const AppProvider = appContext.Provider;
+export const AppProvider = AppContext.Provider;
 
 export const useAppContext = (): AppContext & { setUnhistorisedDataClass: UpdateConsumer<DataClass>; isHdData: boolean } => {
-  const context = useContext(appContext);
+  const context = use(AppContext);
   return {
     ...context,
     setDataClass: updater => {
@@ -51,13 +51,13 @@ type EntityClassContext = {
   setEntityClass: UpdateConsumer<EntityDataClass>;
 };
 
-const entityClassContext = createContext<EntityClassContext>({
+const EntityClassContext = createContext<EntityClassContext>({
   entityClass: {} as EntityDataClass,
   setEntityClass: () => {}
 });
 
-export const EntityClassProvider = entityClassContext.Provider;
+export const EntityClassProvider = EntityClassContext.Provider;
 
 export const useEntityClass = () => {
-  return useContext(entityClassContext);
+  return use(EntityClassContext);
 };
