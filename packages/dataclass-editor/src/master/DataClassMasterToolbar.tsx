@@ -27,8 +27,8 @@ export const DataClassMasterToolbar = () => {
   const readonly = useReadonly();
   const hotkeys = useKnownHotkeys();
 
-  const firstElement = useRef<HTMLDivElement>(null);
-  useHotkeys(hotkeys.focusToolbar.hotkey, () => firstElement.current?.focus(), { scopes: ['global'] });
+  const firstElementRef = useRef<HTMLDivElement>(null);
+  useHotkeys(hotkeys.focusToolbar.hotkey, () => firstElementRef.current?.focus(), { scopes: ['global'] });
   useHotkeys(
     hotkeys.focusInscription.hotkey,
     () => {
@@ -43,7 +43,7 @@ export const DataClassMasterToolbar = () => {
   const { t } = useTranslation();
 
   return (
-    <Toolbar tabIndex={-1} ref={firstElement}>
+    <Toolbar tabIndex={-1} ref={firstElementRef}>
       <ToolbarTitle>{title}</ToolbarTitle>
       <Flex gap={1}>
         {!readonly && <EditButtons />}

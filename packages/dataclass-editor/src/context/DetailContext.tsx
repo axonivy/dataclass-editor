@@ -1,6 +1,6 @@
 import type { EntityClassField, Field } from '@axonivy/dataclass-editor-protocol';
 import type { MessageData } from '@axonivy/ui-components';
-import { createContext, useContext } from 'react';
+import { createContext, use } from 'react';
 
 type DetailContext = {
   field?: Field;
@@ -8,14 +8,14 @@ type DetailContext = {
   messages: Record<string, MessageData>;
 };
 
-const detailContext = createContext<DetailContext>({
+const DetailContext = createContext<DetailContext>({
   messages: {}
 });
 
-export const DetailContextProvider = detailContext.Provider;
+export const DetailContextProvider = DetailContext.Provider;
 
 export const useDetail = () => {
-  return useContext(detailContext);
+  return use(DetailContext);
 };
 
 type FieldContext = {

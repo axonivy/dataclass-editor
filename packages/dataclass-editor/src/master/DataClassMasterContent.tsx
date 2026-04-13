@@ -221,14 +221,15 @@ export const DataClassMasterContent = () => {
     },
     { scopes: ['global'], enabled: !readonly }
   );
-  const firstElement = useRef<HTMLDivElement>(null);
-  useHotkeys(hotkeys.focusMain.hotkey, () => firstElement.current?.focus(), { scopes: ['global'] });
+  const firstElementRef = useRef<HTMLDivElement>(null);
+  useHotkeys(hotkeys.focusMain.hotkey, () => firstElementRef.current?.focus(), { scopes: ['global'] });
 
   return (
     <Flex direction='column' ref={ref} gap={4} className='h-full overflow-auto' onClick={() => selectRow(table)}>
       {validations.length !== 0 && (
         <Flex direction='column' className='ui-dataclass-editor-main-messages'>
           {validations.map((val, index) => (
+            // eslint-disable-next-line @eslint-react/no-array-index-key
             <Message key={index} variant={variant(val)}>
               {val.message}
             </Message>
@@ -248,7 +249,7 @@ export const DataClassMasterContent = () => {
       ) : (
         <BasicField
           tabIndex={-1}
-          ref={firstElement}
+          ref={firstElementRef}
           className='m-3 min-h-0'
           label={t('label.attributes')}
           control={control}
