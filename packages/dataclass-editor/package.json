@@ -17,7 +17,7 @@
   "types": "lib/index.d.ts",
   "main": "lib/editor.js",
   "dependencies": {
-    "@axonivy/dataclass-editor-protocol": "~12.0.15-next"
+    "@axonivy/dataclass-editor-protocol": "workspace:~12.0.15-next"
   },
   "peerDependencies": {
     "@axonivy/jsonrpc": "~12.0.15-next",
@@ -28,6 +28,10 @@
     "react": "^18.2 || ^19.0"
   },
   "devDependencies": {
+    "@axonivy/jsonrpc": "~12.0.15-next.750.0ac5589",
+    "@axonivy/ui-components": "~12.0.15-next.750.0ac5589",
+    "@axonivy/ui-icons": "~12.0.15-next.750.0ac5589",
+    "@tanstack/react-table": "^8.21.3",
     "@testing-library/dom": "^10.4.0",
     "@testing-library/react": "^16.1.0",
     "@types/react": "^18.3.3",
@@ -36,6 +40,7 @@
     "jsdom": "^25.0.1",
     "react": "^18.3.1",
     "react-dom": "^18.3.1",
+    "vite": "^7.0.0",
     "vite-plugin-dts": "^4.5.0",
     "vitest": "^3.2.4"
   },
@@ -43,7 +48,7 @@
     "clean": "rimraf lib *.tsbuildinfo",
     "build": "tsc --build",
     "package": "vite build",
-    "build:clean": "npm run clean && npm run build",
+    "build:clean": "pnpm run clean && pnpm run build",
     "type": "tsc --noEmit",
     "test": "vitest",
     "test:ci": "vitest run"

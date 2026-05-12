@@ -4,19 +4,19 @@ This repo contains the web-based data class editor client.
 
 ### Available Scripts
 
-`npm install`: Install all packages
+`pnpm install`: Install all packages
 
-`npm run package`: Build the lib output
+`pnpm run package`: Build the lib output
 
-`npm run dev`: Start the dev server
+`pnpm run dev`: Start the dev server
 
 #### Run tests
 
-`npm run test`: Run unit tests
+`pnpm run test`: Run unit tests
 
-`npm run webtest:mock`: Run Playwright tests against mock environment
+`pnpm run webtest:mock`: Run Playwright tests against mock environment
 
-`npm run webtest:engine`: Run Playwright tests against designer engine
+`pnpm run webtest:engine`: Run Playwright tests against designer engine
 
 ### VsCode dev environment
 

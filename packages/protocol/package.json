@@ -15,18 +15,17 @@
   ],
   "type": "module",
   "types": "./lib/index.d.ts",
-  "module": "./lib/protocol.js",
+  "module": "./lib/index.js",
   "source": "./src/index",
   "scripts": {
     "clean": "rimraf lib tsconfig.tsbuildinfo",
     "build": "tsc --build",
-    "package": "vite build",
-    "build:clean": "npm run clean && npm run generate && npm run build",
+    "package": "tsc",
+    "build:clean": "pnpm run clean && pnpm run generate && pnpm run build",
     "generate": "node ./schemaCodegen.cjs",
     "type": "tsc --noEmit"
   },
   "devDependencies": {
-    "@vitejs/plugin-react": "^4.3.4",
     "json-schema-to-typescript": "^13.1.1"
   }
 }

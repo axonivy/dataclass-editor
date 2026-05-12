@@ -13,7 +13,7 @@ export default defineConfig({
     headless: process.env.CI ? true : false
   },
   webServer: {
-    command: `npm run ${process.env.CI ? 'serve' : 'dev'} -w @axonivy/dataclass-editor-standalone`,
+    command: `pnpm run --filter @axonivy/dataclass-editor-standalone ${process.env.CI ? 'serve' : 'dev'}`,
     url: process.env.CI ? 'http://localhost:4173' : 'http://localhost:3002',
     reuseExistingServer: !process.env.CI
   },

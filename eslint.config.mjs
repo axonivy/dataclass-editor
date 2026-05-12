@@ -1,7 +1,7 @@
-import tseslint from 'typescript-eslint';
 import config from '@axonivy/eslint-config';
+import { defineConfig } from 'eslint/config';
 
-export default tseslint.config(
+export default defineConfig(
   ...config.base,
   // TypeScript recommended configs
   {
