@@ -8,23 +8,25 @@
     "node": "24.14.1"
   },
   "scripts": {
-    "ci": "npm install && npm run package && (npm run lint:ci || true) && npm run type && npm run test:ci",
-    "clean": "lerna run clean",
+    "preinstall": "npx only-allow pnpm",
+    "check": "pnpm run type && (pnpm run lint:ci || true) && pnpm run test:ci",
+    "clean": "pnpm run -r clean",
     "build": "tsc --build",
-    "package": "lerna run package",
-    "build:clean": "lerna run build:clean",
-    "type": "lerna run type",
+    "package": "pnpm run -r package",
+    "build:clean": "pnpm run -r build:clean",
+    "type": "pnpm run -r type",
     "lint": "eslint",
     "lint:ci": "eslint -o eslint.xml -f checkstyle",
     "lint:fix": "eslint --fix",
     "lint:inspect": "eslint --inspect-config",
-    "protocol": "npm run -w @axonivy/dataclass-editor-protocol",
-    "dev": "npm run -w @axonivy/dataclass-editor-standalone dev",
-    "test": "npm run -w @axonivy/dataclass-editor test",
-    "test:ci": "npm run -w @axonivy/dataclass-editor test:ci",
-    "webtest": "npm run -w @axonivy/dataclass-editor-playwright webtest",
-    "webtest:screenshot": "npm run -w @axonivy/dataclass-editor-playwright webtest:screenshots",
+    "protocol": "pnpm run --filter @axonivy/dataclass-editor-protocol",
+    "dev": "pnpm run --filter @axonivy/dataclass-editor-standalone dev",
+    "test": "pnpm run --filter @axonivy/dataclass-editor test",
+    "test:ci": "pnpm run --filter @axonivy/dataclass-editor test:ci",
+    "webtest": "pnpm run --filter @axonivy/dataclass-editor-playwright webtest",
+    "webtest:screenshot": "pnpm run --filter @axonivy/dataclass-editor-playwright webtest:screenshots",
     "update:axonivy:next": "npx --yes npm-check-updates @axonivy* -w -c 0 -t semver -u",
+    "raise:version": "lerna version --no-git-tag-version --no-push --ignore-scripts --exact --yes",
     "publish:next": "lerna publish --exact --canary --preid next --tag-version-prefix beta --pre-dist-tag next --no-git-tag-version --no-push --ignore-scripts --yes"
   },
   "devDependencies": {
@@ -32,14 +34,8 @@
     "@types/node": "^24.10.0",
     "@lerna-lite/cli": "^4.11.2",
     "@lerna-lite/publish": "^4.11.2",
-    "@lerna-lite/run": "^4.11.2",
     "@lerna-lite/version": "^4.11.2",
     "rimraf": "^6.0.1",
     "typescript": "^5.8.3"
-  },
-  "workspaces": [
-    "packages/*",
-    "integrations/*",
-    "playwright"
-  ]
+  }
 }
