@@ -89,7 +89,10 @@
   },
   "message": {
     "addFirstItem": "データクラスに最初の属性を追加する",
-    "noDataClass": "データクラスが見つかりません"
+    "noDataClass": "データクラスが見つかりません",
+    "emptyName": "お名前を空にすることはできません.",
+    "emptyType": "タイプは空にすることはできません.",
+    "nameIsTaken": "名前は既に取られた."
   },
   "modifier": {
     "generated": "生成済み",
