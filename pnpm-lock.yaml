@@ -33,10 +33,10 @@ importers:
   integrations/standalone:
     dependencies:
       '@axonivy/dataclass-editor':
-        specifier: workspace:~12.0.15-next
+        specifier: workspace:~12.0.16-next
         version: link:../../packages/dataclass-editor
       '@axonivy/dataclass-editor-protocol':
-        specifier: workspace:~12.0.15-next
+        specifier: workspace:~12.0.16-next
         version: link:../../packages/protocol
       '@axonivy/jsonrpc':
         specifier: ~12.0.15-next.750.0ac5589
@@ -76,7 +76,7 @@ importers:
   packages/dataclass-editor:
     dependencies:
       '@axonivy/dataclass-editor-protocol':
-        specifier: workspace:~12.0.15-next
+        specifier: workspace:~12.0.16-next
         version: link:../protocol
       '@tanstack/react-query':
         specifier: ^5.32
