@@ -1,7 +1,7 @@
 {
   "common": {
     "hotkey": {
-      "help": "ヘルプを開く ({{hotkey}})",
+      "help": "オープンヘルプ({{hotkey}})",
       "focusMain": "メインをフォーカス ({{hotkey}})",
       "focusToolbar": "ツールバーをフォーカス ({{hotkey}})",
       "redo": "やり直す ({{hotkey}})",
