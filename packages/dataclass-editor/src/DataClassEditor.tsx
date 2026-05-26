@@ -1,10 +1,4 @@
-import type {
-  DataClass,
-  DataClassData,
-  DataClassEditorDataContext,
-  EditorProps,
-  ValidationResult
-} from '@axonivy/dataclass-editor-protocol';
+import type { DataClass, DataClassData, DataClassEditorDataContext, EditorProps } from '@axonivy/dataclass-editor-protocol';
 import {
   Flex,
   PanelMessage,
@@ -65,8 +59,8 @@ function DataClassEditor(props: EditorProps) {
     setContext(props.context);
     setDirectSave(props.directSave);
   }, [props]);
+  const [initialData, setInitialData] = useState<DataClass | undefined>(undefined);
   const [selectedField, setSelectedField] = useState<number>();
-  const [validations, setValidations] = useState<Array<ValidationResult>>([]);
   const history = useHistoryData<DataClass>();
 
   const client = useClient();
@@ -80,24 +74,23 @@ function DataClassEditor(props: EditorProps) {
     };
   }, []);
 
-  const { data, isPending, isError, error } = useQuery({
+  const { data, isPending, isError, isSuccess, error } = useQuery({
     queryKey: queryKeys.data(context),
-    queryFn: async () => {
-      const data = await client.data(context);
-      history.push(data.data);
-      return data;
-    },
+    queryFn: async () => client.data(context),
     structuralSharing: false
   });
 
-  useQuery({
+  const { data: validations } = useQuery({
     queryKey: queryKeys.validate(context),
-    queryFn: async () => {
-      const validations = await client.validate(context);
-      setValidations(validations);
-      return validations;
-    }
+    queryFn: async () => client.validate(context),
+    initialData: [],
+    enabled: isSuccess
   });
+
+  if (data?.data !== undefined && initialData === undefined) {
+    setInitialData(data.data);
+    history.push(data.data);
+  }
 
   const mutation = useMutation({
     mutationKey: queryKeys.saveData(context),
@@ -109,11 +102,11 @@ function DataClassEditor(props: EditorProps) {
         return undefined;
       });
       if (saveData) {
-        const validations = await client.saveData({ context, data: saveData.data, directSave });
-        return setValidations(validations);
+        await client.saveData({ context, data: saveData.data, directSave });
       }
       return Promise.resolve();
-    }
+    },
+    onSuccess: () => queryClient.invalidateQueries({ queryKey: queryKeys.validate(context) })
   });
 
   const hotkeys = useKnownHotkeys();
