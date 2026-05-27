@@ -1,7 +1,7 @@
 {
   "common": {
     "hotkey": {
-      "help": "オープンヘルプ({{hotkey}})",
+      "help": "ヘルプを開く ({{hotkey}})",
       "focusMain": "メインをフォーカス ({{hotkey}})",
       "focusToolbar": "ツールバーをフォーカス ({{hotkey}})",
       "redo": "やり直す ({{hotkey}})",
@@ -90,7 +90,7 @@
   "message": {
     "addFirstItem": "データクラスに最初の属性を追加する",
     "noDataClass": "データクラスが見つかりません",
-    "emptyName": "お名前を空にすることはできません.",
+    "emptyName": "名前を空にすることはできません。",
     "emptyType": "タイプは空にすることはできません.",
     "nameIsTaken": "名前は既に取られた."
   },
