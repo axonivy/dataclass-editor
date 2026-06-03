@@ -17,7 +17,7 @@
   "types": "lib/index.d.ts",
   "main": "lib/editor.js",
   "dependencies": {
-    "@axonivy/dataclass-editor-protocol": "workspace:~12.0.16-next"
+    "@axonivy/dataclass-editor-protocol": "workspace:~"
   },
   "peerDependencies": {
     "@axonivy/jsonrpc": "~12.0.16-next",
@@ -32,17 +32,17 @@
     "@axonivy/ui-components": "~12.0.16-next.762.6b30854",
     "@axonivy/ui-icons": "~12.0.16-next.762.6b30854",
     "@tanstack/react-table": "^8.21.3",
-    "@testing-library/dom": "^10.4.0",
-    "@testing-library/react": "^16.1.0",
-    "@types/react": "^18.3.3",
-    "@vanilla-extract/recipes": "^0.5.5",
-    "@vitejs/plugin-react": "^4.3.4",
+    "@testing-library/dom": "^10.4.1",
+    "@testing-library/react": "^16.3.2",
+    "@types/react": "^18.3.29",
+    "@vanilla-extract/recipes": "^0.5.7",
+    "@vitejs/plugin-react": "^4.7.0",
     "jsdom": "^25.0.1",
     "react": "^18.3.1",
     "react-dom": "^18.3.1",
-    "vite": "^7.0.0",
-    "vite-plugin-dts": "^4.5.0",
-    "vitest": "^3.2.4"
+    "vite": "^7.3.3",
+    "vite-plugin-dts": "^4.5.4",
+    "vitest": "^4.1.8"
   },
   "scripts": {
     "clean": "rimraf lib *.tsbuildinfo",
