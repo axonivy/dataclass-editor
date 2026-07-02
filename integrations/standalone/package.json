@@ -1,7 +1,7 @@
 {
   "name": "@axonivy/dataclass-editor-standalone",
   "private": true,
-  "version": "12.0.16-next",
+  "version": "12.0.17-next",
   "dependencies": {
     "@axonivy/dataclass-editor": "workspace:~",
     "@axonivy/dataclass-editor-protocol": "workspace:~",
