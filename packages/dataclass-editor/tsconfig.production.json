@@ -1,4 +1,5 @@
 {
   "extends": "./tsconfig.json",
-  "exclude": ["**/*test.ts", "**/*test.tsx", "**/*test-helper.ts", "**/test-utils/*"]
+  "exclude": ["**/*test.ts", "**/*test.tsx", "**/*test-helper.ts", "**/test-utils/*"],
+  "references": [{ "path": "../../packages/protocol/tsconfig.json" }]
 }
