@@ -11,7 +11,7 @@ export const server = process.env.BASE_URL ?? 'http://localhost:8081';
 export const user = 'Developer';
 const ws = process.env.TEST_WS ?? '';
 const app = process.env.TEST_APP ?? 'designer';
-const pmv = 'dataclass-test-project';
+const project = 'dataclass-test-project';
 
 export class DataClassEditor {
   readonly page: Page;
@@ -40,7 +40,7 @@ export class DataClassEditor {
 
   static async openDataClass(page: Page, file: string, options?: { readonly?: boolean }) {
     const serverUrl = server.replace(/^https?:\/\//, '');
-    let url = `?server=${serverUrl}${ws}&app=${app}&pmv=${pmv}&file=${file}`;
+    let url = `?server=${serverUrl}${ws}&app=${app}&project=${project}&file=${file}`;
     if (options) {
       url += `${this.params(options)}`;
     }
@@ -57,7 +57,7 @@ export class DataClassEditor {
         'Content-Type': 'application/json',
         Authorization: 'Basic ' + Buffer.from(user + ':' + user).toString('base64')
       },
-      body: JSON.stringify({ name: namespace + '.' + name, project: { app, pmv } })
+      body: JSON.stringify({ name: namespace + '.' + name, project: { app, project } })
     });
     if (!result.ok) {
       throw Error(`Failed to create data class: ${result.status}`);

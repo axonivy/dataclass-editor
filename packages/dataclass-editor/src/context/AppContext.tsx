@@ -16,7 +16,7 @@ type AppContext = {
 };
 
 const AppContext = createContext<AppContext>({
-  context: { app: '', pmv: '', file: '' },
+  context: { app: '', project: '', file: '' },
   isPersistable: true,
   dataClass: {} as DataClass,
   setDataClass: () => {},
