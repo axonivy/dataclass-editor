@@ -6,18 +6,10 @@
  */
 
 export type Association = ("ONE_TO_ONE" | "ONE_TO_MANY" | "MANY_TO_ONE")
-export type CascadeType = "ALL" | "PERSIST" | "MERGE" | "REMOVE" | "REFRESH";
-export type Modifier =
-  | "PERSISTENT"
-  | "ID"
-  | "GENERATED"
-  | "NOT_NULLABLE"
-  | "UNIQUE"
-  | "NOT_UPDATEABLE"
-  | "NOT_INSERTABLE"
-  | "VERSION";
-export type EntityClassFieldAssociation = "ONE_TO_ONE" | "ONE_TO_MANY" | "MANY_TO_ONE";
-export type Severity = "INFO" | "WARNING" | "ERROR";
+export type CascadeType = 'ALL' | 'PERSIST' | 'MERGE' | 'REMOVE' | 'REFRESH';
+export type Modifier = 'PERSISTENT' | 'ID' | 'GENERATED' | 'NOT_NULLABLE' | 'UNIQUE' | 'NOT_UPDATEABLE' | 'NOT_INSERTABLE' | 'VERSION';
+export type EntityClassFieldAssociation = 'ONE_TO_ONE' | 'ONE_TO_MANY' | 'MANY_TO_ONE';
+export type Severity = 'INFO' | 'WARNING' | 'ERROR';
 
 export interface DataClasses {
   dataClassCombineArgs: DataClassCombineArgs;
@@ -42,7 +34,7 @@ export interface DataClassCombineArgs {
 export interface DataClassEditorDataContext {
   app: string;
   file: string;
-  pmv: string;
+  project: string;
 }
 export interface DataClassData {
   context: DataClassEditorDataContext;
@@ -84,7 +76,7 @@ export interface DataClassEditorFieldContext {
   app: string;
   field: string;
   file: string;
-  pmv: string;
+  project: string;
 }
 export interface DataClassSaveDataArgs {
   context: DataClassEditorDataContext;

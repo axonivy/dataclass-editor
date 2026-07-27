@@ -1,7 +1,7 @@
 import type { DataClassData, ValidationResult } from '@axonivy/dataclass-editor-protocol';
 
 export const dataClass: DataClassData = {
-  context: { app: '', pmv: '', file: '' },
+  context: { app: '', project: '', file: '' },
   data: {
     $schema: 'https://json-schema.axonivy.com/data-class/11.4.0/data-class.json',
     simpleName: 'Interview',

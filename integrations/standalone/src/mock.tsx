@@ -29,7 +29,7 @@ root.render(
         <QueryProvider client={queryClient}>
           <ReadonlyProvider readonly={readonly}>
             <HotkeysProvider initiallyActiveScopes={['global']}>
-              <DataClassEditor context={{ app, pmv: '', file }} />
+              <DataClassEditor context={{ app, project: '', file }} />
             </HotkeysProvider>
           </ReadonlyProvider>
         </QueryProvider>
