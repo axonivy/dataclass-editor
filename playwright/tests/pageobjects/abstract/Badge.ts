@@ -15,6 +15,6 @@ export class Badge {
 
   async expectToHaveTooltip(...lines: Array<string>) {
     await this.locator.hover();
-    await expect(this.parent.page().locator('.ui-tooltip-content').getByRole('tooltip')).toHaveText(lines.join(''));
+    await expect(this.parent.page().getByRole('tooltip')).toHaveText(lines.join(''));
   }
 }
