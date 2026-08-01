@@ -22,7 +22,7 @@ export const DATACLASS: DataclassType[] = [
     name: 'Person',
     fullQualifiedName: 'ch.ivyteam.test.Person',
     packageName: 'ch.ivyteam.test',
-    path: 'dataclasses/ch/ivyteam/test/Person.ivyClass'
+    path: 'dataclass/ch/ivyteam/test/Person.d.json'
   },
   {
     name: 'List',

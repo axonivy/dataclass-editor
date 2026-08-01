@@ -21,7 +21,7 @@ pipeline {
             }
           }
           archiveArtifacts artifacts: '**/integrations/standalone/build/**', allowEmptyArchive: true
-          currentBuild.description = "<a href=${BUILD_URL}artifact/integrations/standalone/build/index.html?server=localhost:8081&secure=false&app=designer&project=dataclass-test-project&file=dataclasses/dataclass/DataClass.d.json>&raquo; Data Class Editor</a><br>" +
+          currentBuild.description = "<a href=${BUILD_URL}artifact/integrations/standalone/build/index.html?server=localhost:8081&secure=false&app=designer&project=dataclass-test-project&file=dataclass/dataclass/DataClass.d.json>&raquo; Data Class Editor</a><br>" +
             "<a href=${BUILD_URL}artifact/integrations/standalone/build/mock.html>&raquo; Data Class Editor Mock</a>"
 
           withChecks('ESLint') {

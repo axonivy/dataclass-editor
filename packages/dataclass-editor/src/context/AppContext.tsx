@@ -42,7 +42,7 @@ export const useAppContext = (): AppContext & { setUnhistorisedDataClass: Update
       });
     },
     setUnhistorisedDataClass: context.setDataClass,
-    isHdData: context.context.file.includes('src_hd')
+    isHdData: context.context.file.startsWith('dialog')
   };
 };
 

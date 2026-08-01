@@ -2,14 +2,14 @@ import { expect, test } from '@playwright/test';
 import { DataClassEditor } from '../pageobjects/DataClassEditor';
 
 test('normal data class', async ({ page }) => {
-  const editor = await DataClassEditor.openDataClass(page, 'dataclasses/dataclass/Data.d.json');
+  const editor = await DataClassEditor.openDataClass(page, 'dataclass/dataclass/Data.d.json');
   await expect(editor.title).toHaveText('Data Class - Data');
   await expect(editor.toolbar.locator.getByRole('button', { name: 'Open Process' })).toBeHidden();
   await expect(editor.toolbar.formBtn).toBeHidden();
 });
 
 test('hd data class', async ({ page }) => {
-  const editor = await DataClassEditor.openDataClass(page, 'src_hd/dataclass/form/formData.d.json');
+  const editor = await DataClassEditor.openDataClass(page, 'dialog/dataclass/form/formData.d.json');
   await expect(editor.title).toHaveText('Data Class - formData');
   await expect(editor.toolbar.processBtn).toBeVisible();
   await expect(editor.toolbar.formBtn).toBeVisible();
@@ -19,7 +19,7 @@ test('hd data class', async ({ page }) => {
 });
 
 test('readonly', async ({ page }) => {
-  const editor = await DataClassEditor.openDataClass(page, 'dataclasses/dataclass/DataClass.d.json', { readonly: true });
+  const editor = await DataClassEditor.openDataClass(page, 'dataclass/dataclass/DataClass.d.json', { readonly: true });
   await expect(editor.add.locator).toBeHidden();
   await page.keyboard.press('a');
   await expect(page.getByRole('dialog')).toBeHidden();

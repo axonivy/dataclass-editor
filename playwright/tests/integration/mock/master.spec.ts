@@ -34,7 +34,7 @@ test.describe('add field', () => {
     });
 
     test('is not persistable', async ({ page }) => {
-      editor = await DataClassEditor.openMock(page, { file: '/src_hd/Data.d.json' });
+      editor = await DataClassEditor.openMock(page, { file: 'dialog/Data.d.json' });
       await editor.addField('newAttribute', 'String');
       await expect(editor.table.row(6).badge('P').locator).toBeHidden();
     });

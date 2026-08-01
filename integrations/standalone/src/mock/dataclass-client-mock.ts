@@ -20,7 +20,7 @@ export class DataClassClientMock implements Client {
 
   data(context: DataClassEditorDataContext): Promise<DataClassData> {
     let result = this.dataClassData;
-    if (context.file.includes('src_hd')) {
+    if (context.file.startsWith('dialog')) {
       result = { ...this.dataClassData, isPersistable: false };
     }
     return Promise.resolve(result);
