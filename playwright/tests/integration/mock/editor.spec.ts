@@ -58,7 +58,7 @@ test('type', async ({ page }) => {
 });
 
 test('open process', async ({ page }) => {
-  const editor = await DataClassEditor.openMock(page, { file: '/src_hd/Data.d.json' });
+  const editor = await DataClassEditor.openMock(page, { file: 'dialog/Data.d.json' });
   const msg1 = consoleLog(page);
   await editor.toolbar.processBtn.click();
   expect(await msg1).toContain('openProcess');
@@ -69,7 +69,7 @@ test('open process', async ({ page }) => {
 });
 
 test('open form', async ({ page }) => {
-  const editor = await DataClassEditor.openMock(page, { file: '/src_hd/Data.d.json' });
+  const editor = await DataClassEditor.openMock(page, { file: 'dialog/Data.d.json' });
   const msg1 = consoleLog(page);
   await editor.toolbar.formBtn.click();
   expect(await msg1).toContain('openForm');

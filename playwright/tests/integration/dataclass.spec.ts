@@ -4,7 +4,7 @@ import { DataClassEditor } from '../pageobjects/DataClassEditor';
 let editor: DataClassEditor;
 
 test.beforeEach(async ({ page }) => {
-  editor = await DataClassEditor.openDataClass(page, 'dataclasses/dataclass/DataClass.d.json');
+  editor = await DataClassEditor.openDataClass(page, 'dataclass/dataclass/DataClass.d.json');
 });
 
 test('load data', async () => {

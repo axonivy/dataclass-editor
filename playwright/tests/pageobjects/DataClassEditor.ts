@@ -62,7 +62,7 @@ export class DataClassEditor {
     if (!result.ok) {
       throw Error(`Failed to create data class: ${result.status}`);
     }
-    const editor = await this.openDataClass(page, `dataclasses/${namespace}/${name}.d.json`);
+    const editor = await this.openDataClass(page, `dataclass/${namespace}/${name}.d.json`);
     return editor;
   }
 

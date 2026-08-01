@@ -80,7 +80,7 @@ describe('annotations', () => {
 });
 
 test('properties hidden if not persistable', async ({ page }) => {
-  const editor = await DataClassEditor.openMock(page, { file: 'src_hd/dataclass/form/formData.d.json' });
+  const editor = await DataClassEditor.openMock(page, { file: 'dialog/dataclass/form/formData.d.json' });
 
   await editor.table.row(0).locator.click();
   await expect(editor.detail.field.general.properties.collapsible.locator).toBeHidden();
