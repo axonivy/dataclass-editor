@@ -13,8 +13,8 @@ export default defineConfig({
   server: { port: 3002 },
   resolve: {
     alias: {
-      '@axonivy/dataclass-editor': resolve(__dirname, '../../packages/dataclass-editor/src'),
-      '@axonivy/dataclass-editor-protocol': resolve(__dirname, '../../packages/protocol/src')
+      '@axonivy/dataclass-editor': resolve(import.meta.dirname, '../../packages/dataclass-editor/src'),
+      '@axonivy/dataclass-editor-protocol': resolve(import.meta.dirname, '../../packages/protocol/src')
     }
   },
   base: './'
