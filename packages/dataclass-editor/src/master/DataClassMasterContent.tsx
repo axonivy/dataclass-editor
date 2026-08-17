@@ -3,6 +3,7 @@ import {
   arrayMoveMultiple,
   BasicField,
   Button,
+  dataTableHelper,
   deepEqual,
   deleteAllSelectedRows,
   Flex,
@@ -26,13 +27,12 @@ import {
   useMultiSelectRow,
   useReadonly,
   useTableKeyHandler,
-  useTableSelect,
-  useTableSort
+  type DataTableFeatures
 } from '@axonivy/ui-components';
 import { IvyIcons } from '@axonivy/ui-icons';
 import { useQueryClient } from '@tanstack/react-query';
-import { getCoreRowModel, useReactTable, type ColumnDef, type Row } from '@tanstack/react-table';
-import { useRef } from 'react';
+import { useTable, type Row } from '@tanstack/react-table';
+import { useEffect, useRef } from 'react';
 import { useTranslation } from 'react-i18next';
 import { useAppContext } from '../context/AppContext';
 import { useFunction } from '../context/useFunction';
@@ -45,6 +45,7 @@ import { FieldBadges } from './table/FieldBadges';
 import { ValidationRow } from './table/ValidationRow';
 
 const fullQualifiedClassNameRegex = /(?:[\w]+\.)+([\w]+)(?=[<,> ]|$)/g;
+const { columnHelper, tableOptions } = dataTableHelper<Field>();
 
 export const simpleTypeName = (fullQualifiedType: string) => {
   return fullQualifiedType.replace(fullQualifiedClassNameRegex, (_fullQualifiedClassName, className) => className);
@@ -57,24 +58,13 @@ export const DataClassMasterContent = () => {
 
   const validations = useValidation('#class');
 
-  const selection = useTableSelect<Field>({
-    onSelect: selectedRows => {
-      const selectedRowId = Object.keys(selectedRows).find(key => selectedRows[key]);
-      const selectedRowCount = Object.values(selectedRows).filter(value => value === true).length;
-      const selectedField = selectedRowCount === 1 ? table.getRowModel().flatRows.find(row => row.id === selectedRowId)?.index : undefined;
-      setSelectedField(selectedField);
-    }
-  });
-  const sort = useTableSort();
-  const columns: Array<ColumnDef<Field, string>> = [
-    {
-      accessorKey: 'name',
+  const columns = columnHelper.columns([
+    columnHelper.accessor('name', {
       header: ({ column }) => <SortableHeader column={column} name={t('common.label.name')} />,
       cell: cell => <span>{cell.getValue()}</span>,
       minSize: 50
-    },
-    {
-      accessorKey: 'type',
+    }),
+    columnHelper.accessor('type', {
       header: ({ column }) => <SortableHeader column={column} name={t('label.type')} />,
       cell: cell => (
         <TooltipProvider>
@@ -86,9 +76,8 @@ export const DataClassMasterContent = () => {
           </Tooltip>
         </TooltipProvider>
       )
-    },
-    {
-      accessorKey: 'comment',
+    }),
+    columnHelper.accessor('comment', {
       header: ({ column }) => <SortableHeader column={column} name={t('common.label.comment')} />,
       cell: cell => (
         <ReorderHandleWrapper>
@@ -96,20 +85,23 @@ export const DataClassMasterContent = () => {
           <FieldBadges field={cell.row.original} />
         </ReorderHandleWrapper>
       )
-    }
-  ];
-  const table = useReactTable({
-    ...selection.options,
+    })
+  ]);
+  const table = useTable({
+    ...tableOptions,
     enableMultiRowSelection: true,
-    ...sort.options,
     data: dataClass.fields,
     columns,
-    getCoreRowModel: getCoreRowModel(),
-    state: {
-      ...selection.tableState,
-      ...sort.tableState
-    }
   });
+  useEffect(() => {
+    const subscription = table.atoms.rowSelection.subscribe(selectedRows => {
+      const selectedRowId = Object.keys(selectedRows).find(key => selectedRows[key]);
+      const selectedRowCount = Object.values(selectedRows).filter(value => value === true).length;
+      const selectedField = selectedRowCount === 1 ? table.getRowModel().flatRows.find(row => row.id === selectedRowId)?.index : undefined;
+      setSelectedField(selectedField);
+    });
+    return () => subscription.unsubscribe();
+  }, [table, setSelectedField]);
   const { handleMultiSelectOnRow } = useMultiSelectRow(table);
 
   const deleteField = () => {
@@ -160,7 +152,7 @@ export const DataClassMasterContent = () => {
       }
     }
   );
-  const handleRowDrag = (row: Row<Field>) => {
+  const handleRowDrag = (row: Row<DataTableFeatures, Field>) => {
     if (!row.getIsSelected()) {
       table.resetRowSelection();
     }
@@ -262,7 +254,7 @@ export const DataClassMasterContent = () => {
                 <ValidationRow
                   key={row.id}
                   row={row}
-                  isReorderable={table.getState().sorting.length === 0 && !readonly}
+                  isReorderable={table.state.sorting.length === 0 && !readonly}
                   onDrag={() => handleRowDrag(row)}
                   onClick={event => handleMultiSelectOnRow(row, event)}
                   updateOrder={updateOrder}
