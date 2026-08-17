@@ -32,7 +32,7 @@ import {
 import { IvyIcons } from '@axonivy/ui-icons';
 import { useQueryClient } from '@tanstack/react-query';
 import { useTable, type Row } from '@tanstack/react-table';
-import { useEffect, useRef } from 'react';
+import { useEffect, useMemo, useRef } from 'react';
 import { useTranslation } from 'react-i18next';
 import { useAppContext } from '../context/AppContext';
 import { useFunction } from '../context/useFunction';
@@ -58,40 +58,44 @@ export const DataClassMasterContent = () => {
 
   const validations = useValidation('#class');
 
-  const columns = columnHelper.columns([
-    columnHelper.accessor('name', {
-      header: ({ column }) => <SortableHeader column={column} name={t('common.label.name')} />,
-      cell: cell => <span>{cell.getValue()}</span>,
-      minSize: 50
-    }),
-    columnHelper.accessor('type', {
-      header: ({ column }) => <SortableHeader column={column} name={t('label.type')} />,
-      cell: cell => (
-        <TooltipProvider>
-          <Tooltip>
-            <TooltipTrigger asChild>
-              <span>{simpleTypeName(cell.getValue())}</span>
-            </TooltipTrigger>
-            <TooltipContent>{cell.getValue()}</TooltipContent>
-          </Tooltip>
-        </TooltipProvider>
-      )
-    }),
-    columnHelper.accessor('comment', {
-      header: ({ column }) => <SortableHeader column={column} name={t('common.label.comment')} />,
-      cell: cell => (
-        <ReorderHandleWrapper>
-          <span>{cell.getValue()}</span>
-          <FieldBadges field={cell.row.original} />
-        </ReorderHandleWrapper>
-      )
-    })
-  ]);
+  const columns = useMemo(
+    () =>
+      columnHelper.columns([
+        columnHelper.accessor('name', {
+          header: ({ column }) => <SortableHeader column={column} name={t('common.label.name')} />,
+          cell: cell => <span>{cell.getValue()}</span>,
+          minSize: 50
+        }),
+        columnHelper.accessor('type', {
+          header: ({ column }) => <SortableHeader column={column} name={t('label.type')} />,
+          cell: cell => (
+            <TooltipProvider>
+              <Tooltip>
+                <TooltipTrigger asChild>
+                  <span>{simpleTypeName(cell.getValue())}</span>
+                </TooltipTrigger>
+                <TooltipContent>{cell.getValue()}</TooltipContent>
+              </Tooltip>
+            </TooltipProvider>
+          )
+        }),
+        columnHelper.accessor('comment', {
+          header: ({ column }) => <SortableHeader column={column} name={t('common.label.comment')} />,
+          cell: cell => (
+            <ReorderHandleWrapper>
+              <span>{cell.getValue()}</span>
+              <FieldBadges field={cell.row.original} />
+            </ReorderHandleWrapper>
+          )
+        })
+      ]),
+    [t]
+  );
   const table = useTable({
     ...tableOptions,
     enableMultiRowSelection: true,
     data: dataClass.fields,
-    columns,
+    columns
   });
   useEffect(() => {
     const subscription = table.atoms.rowSelection.subscribe(selectedRows => {
@@ -254,7 +258,7 @@ export const DataClassMasterContent = () => {
                 <ValidationRow
                   key={row.id}
                   row={row}
-                  isReorderable={table.state.sorting.length === 0 && !readonly}
+                  isReorderable={/*table.state.sorting.length === 0 && */ !readonly}
                   onDrag={() => handleRowDrag(row)}
                   onClick={event => handleMultiSelectOnRow(row, event)}
                   updateOrder={updateOrder}

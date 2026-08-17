@@ -21,6 +21,7 @@ import {
 } from '@axonivy/ui-components';
 import { IvyIcons } from '@axonivy/ui-icons';
 import { flexRender, useTable } from '@tanstack/react-table';
+import { useMemo } from 'react';
 import { useTranslation } from 'react-i18next';
 
 type AnnotationsTableProps = {
@@ -32,7 +33,7 @@ type AnnotationsTableProps = {
 type AnnotationRow = { annotation: string };
 
 export const AnnotationsTable = ({ annotations, setAnnotations, message }: AnnotationsTableProps) => {
-  const annotationRows = annotations.map(annotation => ({ annotation }));
+  const annotationRows = useMemo(() => annotations.map(annotation => ({ annotation })), [annotations]);
   const { columnHelper } = dataTableHelper<AnnotationRow>();
   const columns = columnHelper.columns([
     columnHelper.accessor('annotation', {
