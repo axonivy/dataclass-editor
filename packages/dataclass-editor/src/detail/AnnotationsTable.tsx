@@ -6,7 +6,6 @@ import {
   CollapsibleContent,
   CollapsibleState,
   CollapsibleTrigger,
-  dataTableFeatures,
   dataTableHelper,
   deleteFirstSelectedRow,
   InputCell,
@@ -31,18 +30,18 @@ type AnnotationsTableProps = {
 };
 
 type AnnotationRow = { annotation: string };
+const { columnHelper, tableOptions } = dataTableHelper<AnnotationRow>();
+const columns = columnHelper.columns([
+  columnHelper.accessor('annotation', {
+    header: 'Annotation',
+    cell: cell => <InputCell cell={cell} />
+  })
+]);
 
 export const AnnotationsTable = ({ annotations, setAnnotations, message }: AnnotationsTableProps) => {
   const annotationRows = useMemo(() => annotations.map(annotation => ({ annotation })), [annotations]);
-  const { columnHelper } = dataTableHelper<AnnotationRow>();
-  const columns = columnHelper.columns([
-    columnHelper.accessor('annotation', {
-      header: 'Annotation',
-      cell: cell => <InputCell cell={cell} />
-    })
-  ]);
   const table = useTable({
-    features: dataTableFeatures,
+    ...tableOptions,
     data: annotationRows,
     columns,
     meta: {

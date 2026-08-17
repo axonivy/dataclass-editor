@@ -258,7 +258,7 @@ export const DataClassMasterContent = () => {
                 <ValidationRow
                   key={row.id}
                   row={row}
-                  isReorderable={/*table.state.sorting.length === 0 && */ !readonly}
+                  isReorderable={table.atoms.sorting.get().length === 0 && !readonly}
                   onDrag={() => handleRowDrag(row)}
                   onClick={event => handleMultiSelectOnRow(row, event)}
                   updateOrder={updateOrder}
