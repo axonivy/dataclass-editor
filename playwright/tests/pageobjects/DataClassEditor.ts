@@ -1,5 +1,6 @@
 import { expect, type Locator, type Page } from '@playwright/test';
 import { randomUUID } from 'crypto';
+import { resolve } from 'path';
 import { AddFieldDialog } from './AddFieldDialog';
 import { Detail } from './Detail';
 import { Toolbar } from './Toolbar';
@@ -7,11 +8,12 @@ import { Button } from './abstract/Button';
 import { Message } from './abstract/Message';
 import { Table } from './abstract/Table';
 
-export const server = process.env.BASE_URL ?? 'http://localhost:8081';
+export const server = process.env.BASE_URL ?? 'http://localhost:8080/';
 export const user = 'Developer';
-const ws = process.env.TEST_WS ?? '';
-const app = process.env.TEST_APP ?? 'designer';
+const ws = process.env.TEST_WS ?? '~Developer-dataclass-test-project';
+const app = process.env.TEST_APP ?? 'Developer-dataclass-test-project';
 const project = 'dataclass-test-project';
+const engineWsDir = process.env.ENGINE_WS_DIR ?? resolve(import.meta.dirname, '../../', project);
 
 export class DataClassEditor {
   readonly page: Page;
@@ -50,14 +52,18 @@ export class DataClassEditor {
   static async openNewDataClass(page: Page) {
     const name = 'DataClass' + randomUUID().replaceAll('-', '');
     const namespace = 'temp';
-    const result = await fetch(`${server}${ws}/api/web-ide/dataclass`, {
+    const result = await fetch(`${server}designer/api/web-ide/dataclass`, {
       method: 'POST',
       headers: {
         'X-Requested-By': 'dataclass-editor-tests',
         'Content-Type': 'application/json',
         Authorization: 'Basic ' + Buffer.from(user + ':' + user).toString('base64')
       },
-      body: JSON.stringify({ name: namespace + '.' + name, project: { app, project } })
+      body: JSON.stringify({
+        name: namespace + '.' + name,
+        workspaceId: project,
+        projectDir: engineWsDir
+      })
     });
     if (!result.ok) {
       throw Error(`Failed to create data class: ${result.status}`);
