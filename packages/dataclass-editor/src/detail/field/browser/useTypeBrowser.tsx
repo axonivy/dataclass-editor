@@ -48,13 +48,13 @@ export const useTypeBrowser = (value: string): Browser => {
 
   useEffect(() => {
     // eslint-disable-next-line @eslint-react/set-state-in-effect
-    setMetaFilter(typesList.globalFilter.filter);
-    if (typesList.globalFilter.filter.length > 0 && !allTypesSearchActive) {
+    setMetaFilter(typesList.table.state.globalFilter);
+    if (typesList.table.state.globalFilter.length > 0 && !allTypesSearchActive) {
       typesList.table.setExpanded(true);
       // eslint-disable-next-line @eslint-react/set-state-in-effect
       setInitialState(false);
     }
-  }, [allTypesSearchActive, typesList.globalFilter.filter, typesList.table]);
+  }, [allTypesSearchActive, typesList.table, typesList.table.state.globalFilter]);
   const { t } = useTranslation();
 
   return {

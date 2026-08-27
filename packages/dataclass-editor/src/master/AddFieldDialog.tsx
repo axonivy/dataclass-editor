@@ -15,6 +15,7 @@ import {
   TooltipTrigger,
   useDialogHotkeys,
   useHotkeys,
+  type DataTableFeatures,
   type MessageData
 } from '@axonivy/ui-components';
 import { IvyIcons } from '@axonivy/ui-icons';
@@ -28,7 +29,7 @@ import { useKnownHotkeys } from '../utils/useKnownHotkeys';
 
 const DIALOG_HOTKEY_IDS = ['addFieldDialog'];
 
-type AddFieldDialogProps = { table: Table<Field>; children: React.ReactNode };
+type AddFieldDialogProps = { table: Table<DataTableFeatures, Field>; children: React.ReactNode };
 
 export const AddFieldDialog = ({ table, children }: AddFieldDialogProps) => {
   const { open, onOpenChange } = useDialogHotkeys(DIALOG_HOTKEY_IDS);
@@ -51,7 +52,7 @@ export const AddFieldDialog = ({ table, children }: AddFieldDialogProps) => {
   );
 };
 
-export const AddFieldDialogContent = ({ table, closeDialog }: { table: Table<Field>; closeDialog: () => void }) => {
+export const AddFieldDialogContent = ({ table, closeDialog }: { table: Table<DataTableFeatures, Field>; closeDialog: () => void }) => {
   const { isPersistable } = useAppContext();
 
   const nameInputRef = useRef<HTMLInputElement>(null);

@@ -6,6 +6,7 @@ import {
   CollapsibleContent,
   CollapsibleState,
   CollapsibleTrigger,
+  dataTableHelper,
   deleteFirstSelectedRow,
   InputCell,
   SelectRow,
@@ -13,14 +14,13 @@ import {
   TableAddRow,
   TableBody,
   TableCell,
-  updateRowData,
   useReadonly,
-  useTableSelect,
   type CollapsibleControlProps,
   type MessageData
 } from '@axonivy/ui-components';
 import { IvyIcons } from '@axonivy/ui-icons';
-import { flexRender, getCoreRowModel, useReactTable, type ColumnDef } from '@tanstack/react-table';
+import { flexRender, useTable } from '@tanstack/react-table';
+import { useMemo } from 'react';
 import { useTranslation } from 'react-i18next';
 
 type AnnotationsTableProps = {
@@ -29,27 +29,25 @@ type AnnotationsTableProps = {
   message?: MessageData;
 };
 
+type AnnotationRow = { annotation: string };
+const { columnHelper, tableOptions } = dataTableHelper<AnnotationRow>();
+const columns = columnHelper.columns([
+  columnHelper.accessor('annotation', {
+    header: 'Annotation',
+    cell: cell => <InputCell cell={cell} />
+  })
+]);
+
 export const AnnotationsTable = ({ annotations, setAnnotations, message }: AnnotationsTableProps) => {
-  const selection = useTableSelect<string>();
-  const columns: Array<ColumnDef<string, string>> = [
-    {
-      accessorFn: (value: string) => value,
-      header: 'Annotation',
-      cell: cell => <InputCell cell={cell} />
-    }
-  ];
-  const table = useReactTable({
-    ...selection.options,
-    data: annotations,
-    columns: columns,
-    getCoreRowModel: getCoreRowModel(),
-    state: {
-      ...selection.tableState
-    },
+  const annotationRows = useMemo(() => annotations.map(annotation => ({ annotation })), [annotations]);
+  const table = useTable({
+    ...tableOptions,
+    data: annotationRows,
+    columns,
     meta: {
-      updateData: (rowId: string, _columnId: string, value: string) => {
-        const newAnnotations = updateRowData(annotations, Number(rowId), value);
-        setAnnotations(newAnnotations);
+      updateData: (rowId: string, _columnId: string, value: unknown) => {
+        const newAnnotations = annotationRows.map((row, index) => (index === Number(rowId) ? { annotation: String(value) } : row));
+        setAnnotations(newAnnotations.map(row => row.annotation));
       }
     }
   });
@@ -57,13 +55,13 @@ export const AnnotationsTable = ({ annotations, setAnnotations, message }: Annot
   const readonly = useReadonly();
 
   const deleteAnnotation = () => {
-    const { newData: newAnnotations } = deleteFirstSelectedRow(table, annotations);
-    setAnnotations(newAnnotations);
+    const { newData: newAnnotations } = deleteFirstSelectedRow(table, annotationRows);
+    setAnnotations(newAnnotations.map(row => row.annotation));
   };
 
   const addAnnotation = () => {
-    const newAnnotations = addRow(table, annotations, '');
-    setAnnotations(newAnnotations);
+    const newAnnotations = addRow(table, annotationRows, { annotation: '' });
+    setAnnotations(newAnnotations.map(row => row.annotation));
   };
 
   const { t } = useTranslation();
@@ -94,7 +92,9 @@ export const AnnotationsTable = ({ annotations, setAnnotations, message }: Annot
               {table.getRowModel().rows.map(row => (
                 <SelectRow key={row.id} row={row}>
                   {row.getVisibleCells().map(cell => (
-                    <TableCell key={cell.id}>{flexRender(cell.column.columnDef.cell, cell.getContext())}</TableCell>
+                    <TableCell key={cell.id} onClick={cell.getSelectionStartHandler()}>
+                      {flexRender(cell.column.columnDef.cell, cell.getContext())}
+                    </TableCell>
                   ))}
                 </SelectRow>
               ))}
