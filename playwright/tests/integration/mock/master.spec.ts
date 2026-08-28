@@ -52,6 +52,17 @@ test.describe('add field', () => {
       await editor.table.row(6).expectToBeSelected();
       await editor.table.row(6).expectToHaveValues('testAttribute', 'String', '');
     });
+
+    test('type browser', async () => {
+      await editor.add.open.locator.click();
+      await editor.add.locator.getByRole('button', { name: 'Browser' }).click();
+      const typeBrowserDialog = editor.page.getByRole('dialog', { name: 'Type Browser' });
+      await expect(typeBrowserDialog).toBeVisible();
+      await typeBrowserDialog.getByRole('table').getByRole('row', { name: 'Person' }).click();
+      await typeBrowserDialog.getByRole('button', { name: 'Apply' }).click();
+      await expect(typeBrowserDialog).toBeHidden();
+      await expect(editor.add.type.locator).toHaveValue('ch.ivyteam.test.Person');
+    });
   });
 
   test('default values', async () => {

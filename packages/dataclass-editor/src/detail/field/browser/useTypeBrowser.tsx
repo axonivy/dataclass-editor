@@ -36,24 +36,20 @@ export const useTypeBrowser = (value: string): Browser => {
 
   const typesList = useBrowser(types);
 
-  useEffect(() => {
-    if (!allTypesSearchActive && initialState) {
-      const newExpandedState = getInitialExpandState(types, getInitialValue(value).value);
-      typesList.table.setExpanded(newExpandedState);
-
-      const newSelectedState = getInitialSelectState(allTypesSearchActive, types, getInitialValue(value));
-      typesList.table.setRowSelection(newSelectedState);
-    }
-  }, [allTypesSearchActive, value, typesList.table, types, initialState]);
+  if (initialState) {
+    typesList.table.setExpanded(getInitialExpandState(types, getInitialValue(value).value));
+    typesList.table.setRowSelection(getInitialSelectState(allTypesSearchActive, types, getInitialValue(value)));
+    setInitialState(false);
+  }
 
   useEffect(() => {
-    // eslint-disable-next-line @eslint-react/set-state-in-effect
-    setMetaFilter(typesList.table.state.globalFilter);
-    if (typesList.table.state.globalFilter.length > 0 && !allTypesSearchActive) {
-      typesList.table.setExpanded(true);
-      // eslint-disable-next-line @eslint-react/set-state-in-effect
-      setInitialState(false);
-    }
+    const subscription = typesList.table.atoms.globalFilter.subscribe(old => {
+      setMetaFilter(old);
+      if (typesList.table.state.globalFilter.length > 0 && !allTypesSearchActive) {
+        typesList.table.setExpanded(true);
+      }
+    });
+    return () => subscription.unsubscribe();
   }, [allTypesSearchActive, typesList.table, typesList.table.state.globalFilter]);
   const { t } = useTranslation();
 
@@ -67,7 +63,7 @@ export const useTypeBrowser = (value: string): Browser => {
         checked={allTypesSearchActive}
         onCheckedChange={() => {
           setAllTypesSearchActive(!allTypesSearchActive);
-          setInitialState(false);
+          typesList.table.setRowSelection({});
         }}
       />
     ),
