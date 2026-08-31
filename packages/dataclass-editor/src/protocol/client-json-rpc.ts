@@ -31,6 +31,10 @@ export class ClientJsonRpc extends BaseRpcClient implements Client {
     this.onNotification('dataChanged', data => this.onDataChangedEmitter.fire(data));
   }
 
+  initialize(context: DataClassEditorDataContext): Promise<void> {
+    return this.sendRequest('initialize', { ...context });
+  }
+
   data(context: DataClassEditorDataContext): Promise<DataClassData> {
     return this.sendRequest('data', context);
   }

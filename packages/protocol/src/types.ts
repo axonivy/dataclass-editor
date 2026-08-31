@@ -18,6 +18,7 @@ export type EditorProps = { context: DataClassEditorDataContext; directSave?: bo
 export type SaveArgs = DataClassSaveDataArgs & { directSave?: boolean };
 
 export interface RequestTypes extends MetaRequestTypes, FunctionRequestTypes {
+  initialize: [DataClassEditorDataContext, void];
   data: [DataClassEditorDataContext, DataClassData];
   saveData: [DataClassData, EditorFileContent];
   validate: [DataClassEditorDataContext, Array<ValidationResult>];
@@ -41,6 +42,7 @@ export interface Disposable {
 }
 
 export interface Client {
+  initialize(context: DataClassEditorDataContext): Promise<void>;
   data(context: DataClassEditorDataContext): Promise<DataClassData>;
   saveData(saveArgs: SaveArgs): Promise<EditorFileContent>;
   validate(context: DataClassEditorDataContext): Promise<Array<ValidationResult>>;
