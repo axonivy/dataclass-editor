@@ -18,6 +18,10 @@ import { cardinalities, DATACLASS, DATATYPE, mappedByFields } from './meta';
 export class DataClassClientMock implements Client {
   private dataClassData: DataClassData = dataClass;
 
+  initialize(): Promise<void> {
+    return Promise.resolve();
+  }
+
   data(context: DataClassEditorDataContext): Promise<DataClassData> {
     let result = this.dataClassData;
     if (context.file.startsWith('dialog/')) {
