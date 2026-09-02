@@ -3,6 +3,7 @@
   "simpleName" : "formData",
   "namespace" : "dataclass.form",
   "fields" : [ {
-    "name" : "form"
+    "name" : "form",
+    "modifiers" : [ ]
   } ]
 }
