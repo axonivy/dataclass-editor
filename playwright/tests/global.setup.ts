@@ -10,6 +10,11 @@ const requestHeaders = {
 const apiUrl = (engineUrl: string, resource: string) => `${engineUrl.replace(/\/?$/, '/')}designer/api/web-ide/${resource}`;
 
 const setup = async () => {
+  if (process.argv.some((argument) => argument === 'screenshots' || argument === '--project=screenshots')) {
+    console.info('Skipping Web IDE workspace setup for screenshot tests');
+    return;
+  }
+
   const engineUrl = process.env.BASE_URL ?? 'http://localhost:8080';
   const workspacePath = path.resolve(import.meta.dirname, '..');
   const workspaceResponse = await fetch(apiUrl(engineUrl, 'workspace'), {
