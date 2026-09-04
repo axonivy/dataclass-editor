@@ -10,7 +10,7 @@ import { Table } from './abstract/Table';
 
 export const server = process.env.BASE_URL ?? 'http://localhost:8080/';
 export const user = 'Developer';
-const ws = process.env.TEST_WS ?? '~Developer-dataclass-test-project';
+const ws = '~Developer-dataclass-test-project';
 const app = process.env.TEST_APP ?? 'Developer-dataclass-test-project';
 const project = 'dataclass-test-project';
 const engineWsDir = process.env.ENGINE_WS_DIR ?? resolve(import.meta.dirname, '../../', project);

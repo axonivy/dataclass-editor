@@ -26,8 +26,8 @@ Debug and breakpoint support is available in the provided launch configs:
 
 - Launch `Standalone Mock` config to interact with a mocked backend.
 - Launch `Standalone` config to work with an ivyEngine backend.
-  1. Copy the test-project to be served in advance: `./scripts/playwrightInit.sh ~/dev/core`
-  2. Start your dev-engine in Eclipse RCP IDE
+  1. Start your dev-engine in Eclipse RCP IDE
+  2. Open the test project in a ivy VsCode workspace or run the playwright global setup script.
   3. Launch the config in this repo
 
 #### Run tests
