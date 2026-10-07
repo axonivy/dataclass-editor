@@ -1,4 +1,6 @@
-import { ClientContextProvider, DataClassEditor, initQueryClient, QueryProvider } from '@axonivy/dataclass-editor';
+import { ClientContextProvider, DataClassEditor, initQueryClient } from '@axonivy/dataclass-editor';
+import { QueryClientProvider } from '@tanstack/react-query';
+import { ReactQueryDevtools } from '@tanstack/react-query-devtools';
 import { HotkeysProvider, ReadonlyProvider, ThemeProvider } from '@axonivy/ui-components';
 import React from 'react';
 import * as ReactDOM from 'react-dom/client';
@@ -26,13 +28,14 @@ root.render(
   <React.StrictMode>
     <ThemeProvider defaultTheme={'light'}>
       <ClientContextProvider client={client}>
-        <QueryProvider client={queryClient}>
+        <QueryClientProvider client={queryClient}>
           <ReadonlyProvider readonly={readonly}>
             <HotkeysProvider initiallyActiveScopes={['global']}>
               <DataClassEditor context={{ app, project: '', file }} />
             </HotkeysProvider>
           </ReadonlyProvider>
-        </QueryProvider>
+          <ReactQueryDevtools initialIsOpen={false} buttonPosition={'bottom-left'} />
+        </QueryClientProvider>
       </ClientContextProvider>
     </ThemeProvider>
   </React.StrictMode>
