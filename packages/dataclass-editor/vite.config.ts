@@ -20,7 +20,6 @@ export default defineConfig({
         '@axonivy/ui-components',
         '@axonivy/ui-icons',
         '@tanstack/react-query',
-        '@tanstack/react-query-devtools',
         'react',
         'react-error-boundary',
         'react/jsx-runtime',

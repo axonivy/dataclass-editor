@@ -81,9 +81,6 @@ importers:
       '@tanstack/react-query':
         specifier: ^5.32
         version: 5.104.1(react@18.3.1)
-      '@tanstack/react-query-devtools':
-        specifier: ^5.32
-        version: 5.104.1(@tanstack/react-query@5.104.1(react@18.3.1))(@types/react@18.3.31)(csstype@3.2.3)(react@18.3.1)
     devDependencies:
       '@axonivy/jsonrpc':
         specifier: next-12.0.18
