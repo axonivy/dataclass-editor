@@ -2,6 +2,7 @@ import type { Field, ValidationResult } from '@axonivy/dataclass-editor-protocol
 import { cn, MessageRow, ReorderRow, SelectRow, TableCell, type DataTableFeatures } from '@axonivy/ui-components';
 import { flexRender, type Row } from '@tanstack/react-table';
 import { useValidation } from '../../context/useValidation';
+import { useAction } from '../../context/useAction';
 import { toMessageData } from '../../data/validation-utils';
 
 type ValidationRowProps = {
@@ -14,6 +15,7 @@ type ValidationRowProps = {
 
 export const ValidationRow = ({ row, isReorderable, updateOrder, onClick, onDrag }: ValidationRowProps) => {
   const validations = useValidation(row.original.name);
+  const openUrl = useAction('openUrl');
 
   const tableCell = row
     .getVisibleCells()
@@ -34,7 +36,7 @@ export const ValidationRow = ({ row, isReorderable, updateOrder, onClick, onDrag
         .filter(val => val.severity !== 'INFO')
         .map((val, index) => (
           // eslint-disable-next-line @eslint-react/no-array-index-key
-          <MessageRow key={index} columnCount={3} message={toMessageData(val)} />
+          <MessageRow key={index} columnCount={3} message={toMessageData(val, openUrl)} />
         ))}
     </>
   );

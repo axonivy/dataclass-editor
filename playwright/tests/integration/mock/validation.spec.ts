@@ -1,10 +1,29 @@
 import test, { expect } from '@playwright/test';
 import { DataClassEditor } from '../../pageobjects/DataClassEditor';
+import { consoleLog } from '../../pageobjects/console-log';
 
 let editor: DataClassEditor;
 
 test.beforeEach(async ({ page }) => {
   editor = await DataClassEditor.openMock(page);
+});
+
+test('validation reference link', async () => {
+  const url = 'https://example.com/invalidField0-name';
+  await editor.addField('invalidField0');
+
+  const warning = editor.table.message(0);
+  await warning.expectToBeWarning('invalidField0 name warning');
+  await expect(warning.locator.getByRole('button')).toHaveCount(0);
+
+  const reference = editor.table.message(1).locator.getByRole('button', { name: 'INVALID_FIELD0_NAME' });
+  await expect(reference).toBeVisible();
+
+  const action = consoleLog(editor.page);
+  await reference.click();
+  const actionLog = await action;
+  expect(actionLog).toContain('openUrl');
+  expect(actionLog).toContain(url);
 });
 
 test('main', async () => {

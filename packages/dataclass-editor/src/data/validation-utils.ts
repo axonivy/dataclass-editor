@@ -1,11 +1,11 @@
 import type { Severity, ValidationResult } from '@axonivy/dataclass-editor-protocol';
 import { groupBy, type MessageData, type StateDotProps } from '@axonivy/ui-components';
 
-export const messagesByProperty = (validations: Array<ValidationResult>): Record<string, MessageData> => {
+export const messagesByProperty = (validations: Array<ValidationResult>, openUrl: (url: string) => void): Record<string, MessageData> => {
   const validationsByProperty = groupBy(validations, validation => validationProperty(validation));
   const messageDataByProperty: Record<string, MessageData> = {};
   Object.entries(validationsByProperty).forEach(([property, validations]) => {
-    messageDataByProperty[property] = messageData(validations);
+    messageDataByProperty[property] = messageData(validations, openUrl);
   });
   return messageDataByProperty;
 };
@@ -14,21 +14,27 @@ const validationProperty = (validation: ValidationResult) => {
   return validation.path.substring(validation.path.lastIndexOf('.') + 1);
 };
 
-const messageData = (validations: Array<ValidationResult>): MessageData => {
+const messageData = (validations: Array<ValidationResult>, openUrl: (url: string) => void): MessageData => {
   const validationError = validations.find(val => val.severity === 'ERROR');
   if (validationError) {
-    return toMessageData(validationError);
+    return toMessageData(validationError, openUrl);
   }
   const validationWarning = validations.find(val => val.severity === 'WARNING');
   if (validationWarning) {
-    return toMessageData(validationWarning);
+    return toMessageData(validationWarning, openUrl);
   }
   const validationOther = validations[0];
-  return toMessageData(validationOther);
+  return toMessageData(validationOther, openUrl);
 };
 
-export const toMessageData = (validation?: ValidationResult): MessageData => {
-  return { message: validation?.message, variant: validation ? variant(validation) : undefined };
+export const toMessageData = (validation: ValidationResult | undefined, openUrl: (url: string) => void): MessageData => {
+  const url = validation?.url;
+  const tooltip = validation?.code;
+  return {
+    message: validation?.message,
+    variant: validation ? variant(validation) : undefined,
+    ...(url && tooltip ? { reference: { tooltip, openUrl: () => openUrl(url) } } : {})
+  };
 };
 
 export const variant = (validation: ValidationResult): Lowercase<Severity> => {
