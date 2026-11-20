@@ -46,7 +46,7 @@ export const Detail = ({ helpUrl }: { helpUrl: string }) => {
         </TooltipProvider>
       </SidebarHeader>
       <Flex direction='column' className='h-full overflow-auto'>
-        <DetailContextProvider value={{ field, setField, messages: messagesByProperty(validations) }}>
+        <DetailContextProvider value={{ field, setField, messages: messagesByProperty(validations, openUrl) }}>
           {!field ? <DataClassDetailContent /> : <FieldDetailContent key={selectedField} />}
         </DetailContextProvider>
       </Flex>

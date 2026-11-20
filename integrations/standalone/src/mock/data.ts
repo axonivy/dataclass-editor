@@ -76,7 +76,9 @@ export const validations = (dataClassData: DataClassData): Array<ValidationResul
     {
       message: 'invalidField0 name error',
       path: 'invalidField0.NAME',
-      severity: 'ERROR'
+      severity: 'ERROR',
+      code: 'INVALID_FIELD0_NAME',
+      url: 'https://example.com/invalidField0-name'
     },
     {
       message: 'invalidField0 type warning',

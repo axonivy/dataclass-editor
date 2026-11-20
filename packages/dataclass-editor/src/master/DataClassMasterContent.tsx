@@ -35,6 +35,7 @@ import { useTable, type Row } from '@tanstack/react-table';
 import { useEffect, useMemo, useRef } from 'react';
 import { useTranslation } from 'react-i18next';
 import { useAppContext } from '../context/AppContext';
+import { useAction } from '../context/useAction';
 import { useFunction } from '../context/useFunction';
 import { useValidation } from '../context/useValidation';
 import { variant } from '../data/validation-utils';
@@ -53,6 +54,7 @@ export const simpleTypeName = (fullQualifiedType: string) => {
 
 export const DataClassMasterContent = () => {
   const { context, dataClass, setDataClass, setSelectedField, setDetail, detail } = useAppContext();
+  const openUrl = useAction('openUrl');
   const queryClient = useQueryClient();
   const { t } = useTranslation();
 
@@ -225,8 +227,12 @@ export const DataClassMasterContent = () => {
       {validations.length !== 0 && (
         <Flex direction='column' className='ui-dataclass-editor-main-messages'>
           {validations.map((val, index) => (
-            // eslint-disable-next-line @eslint-react/no-array-index-key
-            <Message key={index} variant={variant(val)}>
+            <Message
+              // eslint-disable-next-line @eslint-react/no-array-index-key
+              key={index}
+              variant={variant(val)}
+              reference={{ tooltip: val.code, openUrl: () => openUrl(val.url) }}
+            >
               {val.message}
             </Message>
           ))}
