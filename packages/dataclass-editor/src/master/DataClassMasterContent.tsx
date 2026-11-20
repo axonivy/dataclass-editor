@@ -231,7 +231,7 @@ export const DataClassMasterContent = () => {
               // eslint-disable-next-line @eslint-react/no-array-index-key
               key={index}
               variant={variant(val)}
-              reference={val.code && val.url ? { tooltip: val.code, openUrl: () => openUrl(val.url) } : undefined}
+              reference={{ tooltip: val.code, openUrl: () => openUrl(val.url) }}
             >
               {val.message}
             </Message>

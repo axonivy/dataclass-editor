@@ -28,12 +28,10 @@ const messageData = (validations: Array<ValidationResult>, openUrl: (url: string
 };
 
 export const toMessageData = (validation: ValidationResult | undefined, openUrl: (url: string) => void): MessageData => {
-  const url = validation?.url;
-  const tooltip = validation?.code;
   return {
     message: validation?.message,
     variant: validation ? variant(validation) : undefined,
-    ...(url && tooltip ? { reference: { tooltip, openUrl: () => openUrl(url) } } : {})
+    ...(validation ? { reference: { tooltip: validation.code, openUrl: () => openUrl(validation.url) } } : {})
   };
 };
 

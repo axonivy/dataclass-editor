@@ -12,10 +12,6 @@ test('validation reference link', async () => {
   const url = 'https://example.com/invalidField0-name';
   await editor.addField('invalidField0');
 
-  const warning = editor.table.message(0);
-  await warning.expectToBeWarning('invalidField0 name warning');
-  await expect(warning.locator.getByRole('button')).toHaveCount(0);
-
   const reference = editor.table.message(1).locator.getByRole('button', { name: 'INVALID_FIELD0_NAME' });
   await expect(reference).toBeVisible();
 
